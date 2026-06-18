@@ -1,23 +1,11 @@
-import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+// Root project: shared configuration only. The actual artifacts are produced by the subprojects:
+//   :language - reusable Object Pascal language core (parser + PSI-level IDE features)
+//   :plugin   - the Passat plugin installable into existing JetBrains IDEs
+//   :ide      - standalone Passat IDE (scaffold; full assembly is a later roadmap phase)
+//
+// Plugin/language logic is applied per-module. See each module's build.gradle.kts.
 
-plugins {
-    id("org.jetbrains.kotlin.jvm")
-    id("org.jetbrains.changelog")
-    id("org.jetbrains.intellij.platform")
-}
-
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
-dependencies {
-    testImplementation(libs.junit)
-
-    // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
-    intellijPlatform {
-        intellijIdea("2025.3.5")
-        testFramework(TestFrameworkType.Platform)
-
-        // Add plugin dependencies for compilation here:
-        bundledPlugin("com.intellij.modules.json")
-        bundledPlugin("org.jetbrains.plugins.yaml")
-        bundledPlugin("com.intellij.properties")
-    }
+allprojects {
+    group = providers.gradleProperty("group").get()
+    version = providers.gradleProperty("version").get()
 }

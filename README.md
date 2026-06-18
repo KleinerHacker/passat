@@ -50,10 +50,10 @@ Run the plugin in a sandbox IDE:
 
 ```bash
 # Linux / macOS
-./gradlew runIde
+./gradlew :plugin:runIde
 
 # Windows
-gradlew.bat runIde
+gradlew.bat :plugin:runIde
 ```
 
 This launches an IntelliJ IDEA sandbox with the Passat plugin loaded. You can also use the
@@ -61,41 +61,52 @@ predefined **Run/Debug configurations** in the `.run/` directory from within you
 
 ### Other useful tasks
 
-| Task                     | Description                                                      |
-|--------------------------|-----------------------------------------------------------------|
-| `./gradlew runIde`       | Launch a sandbox IDE with the plugin (use Debug to debug it).    |
-| `./gradlew buildPlugin`  | Build the installable plugin zip (under `build/distributions/`). |
-| `./gradlew test`         | Run the test suite.                                              |
-| `./gradlew verifyPlugin` | Verify plugin compatibility against the targeted IntelliJ IDEs.  |
+| Task                             | Description                                                         |
+|----------------------------------|--------------------------------------------------------------------|
+| `./gradlew :plugin:runIde`       | Launch a sandbox IDE with the plugin (use Debug to debug it).      |
+| `./gradlew :plugin:buildPlugin`  | Build the installable plugin zip (under `plugin/build/distributions/`). |
+| `./gradlew :language:build`      | Build the reusable language core on its own.                       |
+| `./gradlew :plugin:check`        | Run the test suite.                                                |
+| `./gradlew :plugin:verifyPlugin` | Verify plugin compatibility against the targeted IntelliJ IDEs.    |
 
 ## Installing into an existing JetBrains IDE
 
-1. Build the plugin: `./gradlew buildPlugin`.
+1. Build the plugin: `./gradlew :plugin:buildPlugin`.
 2. In your JetBrains IDE, go to **Settings/Preferences → Plugins → ⚙ → Install Plugin from Disk…**.
-3. Select the zip from `build/distributions/`.
+3. Select the zip from `plugin/build/distributions/`.
 
 ## Project structure
 
+Passat is a multi-module Gradle build that separates concerns so the language tooling can be
+reused independently of the IDE/plugin packaging:
+
 ```
 .
-├── .run/                   Predefined Run/Debug configurations
-├── build/                  Output build directory
+├── .run/                       Predefined Run/Debug configurations
 ├── gradle/
-│   ├── wrapper/            Gradle Wrapper
-│   └── libs.versions.toml  Version catalog
-├── src/
-│   └── main/
-│       ├── kotlin/         Kotlin production sources
-│       └── resources/      Resources – plugin.xml, icons, messages
-├── build.gradle.kts        Gradle build configuration
-├── gradle.properties       Gradle configuration properties
-├── settings.gradle.kts     Gradle project settings
-├── CLAUDE.md               Project vision, goals, and roadmap
-└── README.md               This file
+│   ├── wrapper/                Gradle Wrapper
+│   └── libs.versions.toml      Version catalog (incl. platform version)
+├── language/                   :language — reusable Object Pascal language core
+│   └── src/main/
+│       ├── kotlin/             org.pcsoft.passat.language — lexer, parser, PSI, PSI-level features
+│       └── resources/          passat.language.xml — content-module descriptor
+├── plugin/                     :plugin — Passat plugin for existing JetBrains IDEs
+│   └── src/main/
+│       ├── kotlin/             org.pcsoft.passat.plugin — project model, FPC toolchain, run/build/debug
+│       └── resources/META-INF/ plugin.xml, pluginIcon.svg
+├── ide/                        :ide — standalone Passat IDE (scaffold; assembly is roadmap phase 5)
+│   └── src/main/kotlin/        org.pcsoft.passat.ide
+├── build.gradle.kts            Root build (shared configuration)
+├── settings.gradle.kts         Module includes
+├── gradle.properties           Gradle configuration properties
+├── CLAUDE.md                   Project vision, goals, and roadmap
+└── README.md                   This file
 ```
 
-The most important parts are the `src` directory (implementation) and the plugin manifest,
-[`plugin.xml`](./src/main/resources/META-INF/plugin.xml).
+The `:language` module holds the reusable parser and **all PSI-level IDE features** (highlighting,
+brace matching, folding, completion, references, find usages, inspections, formatter, …) and depends
+only on the platform's core language APIs — never on the project model, toolchain, build, run or
+debug. It is bundled into `:plugin` as an IntelliJ Platform content module (`passat.language`).
 
 ## Roadmap
 

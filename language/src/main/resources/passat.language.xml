@@ -1,0 +1,10 @@
+<!-- Object Pascal language core content module descriptor.
+     This descriptor belongs to the reusable :language content module (jar: passat.language.jar).
+     Register parsing and PSI-level IDE features here: fileType, lang.parserDefinition,
+     lang.syntaxHighlighterFactory, lang.braceMatcher, lang.foldingBuilder, lang.commenter,
+     lang.psiStructureViewFactory, completion.contributor, psi.referenceContributor,
+     lang.findUsagesProvider, annotator, localInspection, etc. -->
+<idea-plugin package="org.pcsoft.passat.language">
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+</idea-plugin>

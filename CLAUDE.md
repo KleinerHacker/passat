@@ -31,6 +31,33 @@ same codebase at a later stage.
 - **Dual delivery** — installable plugin for existing JetBrains IDEs **and** a standalone IDE
   distribution from one codebase.
 
+## Module layout
+
+Passat is a **multi-module Gradle build** (`settings.gradle.kts` includes all three). All code lives
+under the root package **`org.pcsoft.passat`** and the Gradle `group` is `org.pcsoft.passat`.
+
+- **`:language`** (`org.pcsoft.passat.language`) — the **reusable** Object Pascal language core:
+  lexer, parser, PSI, and *all PSI-level IDE features* (syntax highlighting, brace matching, folding,
+  commenter, structure view, completion, references/resolve, find usages, syntax-level annotators/
+  inspections, formatter). It depends **only** on the platform's core language APIs — never on the
+  project/module model, toolchain/SDK, build, run or debug — so it can be reused outside Passat.
+  Uses the `org.jetbrains.intellij.platform.module` Gradle plugin and ships a content-module
+  descriptor `passat.language.xml` (resources root).
+- **`:plugin`** (`org.pcsoft.passat.plugin`) — the installable Passat plugin. Depends on `:language`
+  (bundled as the `passat.language` content module, declared via `<content>` in `plugin.xml`) and
+  adds everything needing project context: Pascal module/project type, FPC toolchain/SDK + language
+  version, dependency list, run configurations, build/compile integration, debugger. Uses the
+  `org.jetbrains.intellij.platform` Gradle plugin.
+- **`:ide`** (`org.pcsoft.passat.ide`) — the standalone Passat IDE. **Scaffold only** for now
+  (depends on `:plugin`); full standalone-IDE assembly is roadmap phase 5.
+
+**Reuse boundary rule:** never add a project-model/toolchain/build/run/debug dependency to
+`:language`. If a feature needs the project context, it belongs in `:plugin`.
+
+Key tasks: `:plugin:runIde`, `:plugin:buildPlugin`, `:language:build`, `:plugin:check`,
+`:plugin:verifyPlugin`. Note `CHANGELOG.md` is at the repo root and `:plugin` points the changelog
+plugin at it.
+
 ## Architecture intent
 
 - Built on the **IntelliJ Platform SDK**.
@@ -55,14 +82,23 @@ same codebase at a later stage.
 
 ## Tech stack & key facts
 
+- **Implementation language: Kotlin.** All Passat code is written in Kotlin (add `src/main/java`
+  only if Java interop is strictly required).
 - Language: **Kotlin** (add `src/main/java` if Java is needed).
 - Build: **Gradle** with the **IntelliJ Platform Gradle Plugin 2.16.0**.
 - Target platform: **IntelliJ IDEA 2025.3.5**.
-- Base package: `org.pcsoft.intellij.plugin`.
-- Plugin manifest: `src/main/resources/META-INF/plugin.xml`.
-- Key Gradle tasks: `runIde` (launch a sandbox IDE with the plugin), `buildPlugin` (build the
-  installable zip), `test`, `verifyPlugin`.
+- Root package / Gradle group: `org.pcsoft.passat`.
+- Plugin manifest: `plugin/src/main/resources/META-INF/plugin.xml`.
+- Key Gradle tasks: `:plugin:runIde` (launch a sandbox IDE with the plugin), `:plugin:buildPlugin`
+  (build the installable zip), `:language:build`, `:plugin:check`, `:plugin:verifyPlugin`.
 - Predefined Run/Debug configurations live in `.run/`.
+
+## Object Pascal language status
+
+The current implementation status of the **entire Object Pascal language** (which language
+constructs, dialect features and version levels are already lexed/parsed/supported and which are
+still missing) is tracked in [`PASCAL_STATUS.md`](PASCAL_STATUS.md) at the repo root. Keep this
+file up to date as language support evolves, and consult it before working on the language core.
 
 ## Conventions
 

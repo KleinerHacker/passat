@@ -26,3 +26,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+include(":language", ":plugin", ":ide")
