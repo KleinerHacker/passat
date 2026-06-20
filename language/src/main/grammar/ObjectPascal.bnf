@@ -1,0 +1,41 @@
+/*
+ * Object Pascal grammar (Grammar-Kit).
+ *
+ * Phase 1, first step: only a complete but empty program is accepted:
+ *
+ *     program Demo;
+ *     begin
+ *     end.
+ *
+ * The grammar grows as language support expands (see PASCAL_STATUS.md). Object Pascal is
+ * case-insensitive; the case-insensitive matching of keywords is handled by the JFlex lexer
+ * (ObjectPascal.flex), so this grammar only references the abstract token types.
+ */
+{
+  parserClass="org.pcsoft.passat.language.parser.ObjectPascalParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="ObjectPascal"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.pcsoft.passat.language.parser.psi"
+  psiImplPackage="org.pcsoft.passat.language.parser.psi.impl"
+
+  elementTypeHolderClass="org.pcsoft.passat.language.parser.psi.ObjectPascalTypes"
+  elementTypeClass="org.pcsoft.passat.language.psi.ObjectPascalElementType"
+  tokenTypeClass="org.pcsoft.passat.language.psi.ObjectPascalTokenType"
+
+  tokens=[
+    PROGRAM="program"
+    BEGIN="begin"
+    END="end"
+    SEMICOLON=";"
+    DOT="."
+  ]
+}
+
+pascalFile ::= programDefinition
+
+programDefinition ::= PROGRAM IDENTIFIER SEMICOLON block DOT
+
+block ::= BEGIN END
