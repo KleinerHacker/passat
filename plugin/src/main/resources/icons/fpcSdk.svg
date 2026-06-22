@@ -1,4 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <circle cx="8" cy="8" r="6" fill="none" stroke="#6C707E"/>
-  <text x="8" y="11" font-family="sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="#5FAD65">FPC</text>
+  <defs>
+    <clipPath id="shaft">
+      <rect x="5.5" y="4.375" width="5.0" height="6.875"/>
+    </clipPath>
+  </defs>
+  <rect x="4.688" y="2.5" width="6.625" height="1.875" rx="0.375" fill="#c8862e"/>
+  <rect x="5.5" y="4.375" width="5.0" height="6.875" fill="#eec57e"/>
+  <g clip-path="url(#shaft)"><circle cx="6.679" cy="5.454" r="0.394" fill="#4a2f12"/><circle cx="7.979" cy="5.422" r="0.342" fill="#4a2f12"/><circle cx="9.095" cy="5.424" r="0.348" fill="#4a2f12"/><circle cx="6.891" cy="6.121" r="0.297" fill="#4a2f12"/><circle cx="7.744" cy="6.569" r="0.358" fill="#4a2f12"/><circle cx="9.005" cy="6.676" r="0.401" fill="#4a2f12"/><circle cx="6.805" cy="7.406" r="0.275" fill="#4a2f12"/><circle cx="7.697" cy="7.351" r="0.259" fill="#4a2f12"/><circle cx="9.098" cy="7.172" r="0.255" fill="#4a2f12"/><circle cx="6.686" cy="8.254" r="0.382" fill="#4a2f12"/><circle cx="8.012" cy="8.379" r="0.328" fill="#4a2f12"/><circle cx="9.393" cy="8.265" r="0.293" fill="#4a2f12"/><circle cx="7.019" cy="9.56" r="0.381" fill="#4a2f12"/><circle cx="8.13" cy="9.135" r="0.286" fill="#4a2f12"/><circle cx="9.16" cy="8.981" r="0.37" fill="#4a2f12"/><circle cx="6.646" cy="10.425" r="0.31" fill="#4a2f12"/><circle cx="8.286" cy="10.425" r="0.25" fill="#4a2f12"/><circle cx="9.11" cy="10.465" r="0.323" fill="#4a2f12"/></g>
+  <rect x="5.125" y="11.25" width="5.75" height="1.0" fill="#e0a94e"/>
+  <rect x="4.562" y="12.25" width="6.875" height="1.25" rx="0.375" fill="#c8862e"/>
 </svg>
