@@ -17,10 +17,10 @@ written in **English**.
 
 | Area                         | Status | Notes |
 |------------------------------|:------:|-------|
-| Lexer (tokens, comments)     |   ❌   | Not started |
-| Parser / grammar (PSI)       |   ❌   | Not started |
-| Syntax highlighting          |   ❌   | Not started |
-| Units & program structure    |   ❌   | `program`, `unit`, `library`, `uses` |
+| Lexer (tokens, comments)     |   🚧   | JFlex lexer; case-insensitive keywords `program`/`begin`/`end`, identifier, `;`, `.`. No comments/literals yet |
+| Parser / grammar (PSI)       |   🚧   | Grammar-Kit; only an empty program `program X; begin end.` |
+| Syntax highlighting          |   🚧   | Keyword highlighting (Java keyword color, theme-aware) |
+| Units & program structure    |   🚧   | Empty `program` shell only; `unit`, `library`, `uses` missing |
 | Declarations                 |   ❌   | const, type, var, procedure/function |
 | Types                        |   ❌   | records, classes, enums, sets, arrays, generics |
 | Statements & expressions     |   ❌   | control flow, operators |
@@ -32,3 +32,18 @@ written in **English**.
 ## Notes
 
 Update the table above (and add detail subsections as needed) whenever language support changes.
+
+### Phase 1 — first step (current)
+
+The language core stands up the full JFlex → Grammar-Kit → PSI → highlighting pipeline for the
+smallest valid program:
+
+```pascal
+program Demo;
+begin
+end.
+```
+
+Lexing is case-insensitive (`PROGRAM`/`Program`/`program` are all the `program` keyword). Registered
+features: `ObjectPascalFileType` (`.pas`/`.pp`/`.lpr`), `ObjectPascalParserDefinition` and
+keyword `SyntaxHighlighter`. Everything beyond this empty-program shell is still missing.
