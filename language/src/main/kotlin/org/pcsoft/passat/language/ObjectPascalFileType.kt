@@ -14,7 +14,7 @@ class ObjectPascalFileType private constructor() : LanguageFileType(ObjectPascal
 
     override fun getDefaultExtension(): String = "pas"
 
-    override fun getIcon(): Icon? = null
+    override fun getIcon(): Icon = ObjectPascalIcons.File
 
     companion object {
         @JvmField
