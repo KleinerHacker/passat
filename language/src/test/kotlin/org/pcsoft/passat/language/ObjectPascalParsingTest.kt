@@ -14,6 +14,12 @@ class ObjectPascalParsingTest : ParsingTestCase("", "pas", ObjectPascalParserDef
     /** Object Pascal is case-insensitive: upper-case keywords must parse identically. */
     fun testEmptyProgramUpperCase() = doTest(true)
 
+    /** A program with a `uses` clause importing several units. */
+    fun testProgramWithUses() = doTest(true)
+
+    /** A unit with `uses` clauses in both the interface and implementation sections. */
+    fun testUnitWithUses() = doTest(true)
+
     override fun getTestDataPath(): String = "src/test/resources/testData"
 
     override fun skipSpaces(): Boolean = true

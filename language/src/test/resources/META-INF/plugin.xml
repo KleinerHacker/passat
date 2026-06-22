@@ -1,0 +1,10 @@
+<!-- Test-only plugin descriptor so BasePlatformTestCase loads the Object Pascal language
+     extensions (file type, parser, completion, annotator) in isolation. It reuses the real
+     content-module descriptor verbatim via XInclude to avoid drift. -->
+<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+    <id>org.pcsoft.passat.language.test</id>
+    <name>Object Pascal (test harness)</name>
+    <depends>com.intellij.modules.lang</depends>
+
+    <xi:include href="/passat.language.xml" xpointer="xpointer(/idea-plugin/*)"/>
+</idea-plugin>

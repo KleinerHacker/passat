@@ -18,5 +18,11 @@
         <lang.syntaxHighlighterFactory
             language="ObjectPascal"
             implementationClass="org.pcsoft.passat.language.highlight.ObjectPascalSyntaxHighlighterFactory"/>
+        <completion.contributor
+            language="ObjectPascal"
+            implementationClass="org.pcsoft.passat.language.completion.ObjectPascalUsesCompletionContributor"/>
+        <annotator
+            language="ObjectPascal"
+            implementationClass="org.pcsoft.passat.language.annotator.ObjectPascalUnresolvedUnitAnnotator"/>
     </extensions>
 </idea-plugin>

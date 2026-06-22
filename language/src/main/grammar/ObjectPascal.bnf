@@ -27,15 +27,35 @@
 
   tokens=[
     PROGRAM="program"
+    UNIT="unit"
+    USES="uses"
+    INTERFACE="interface"
+    IMPLEMENTATION="implementation"
+    IN="in"
     BEGIN="begin"
     END="end"
     SEMICOLON=";"
+    COMMA=","
     DOT="."
   ]
 }
 
-pascalFile ::= programDefinition
+pascalFile ::= programDefinition | unitDefinition
 
-programDefinition ::= PROGRAM IDENTIFIER SEMICOLON block DOT
+programDefinition ::= PROGRAM IDENTIFIER SEMICOLON usesClause? block DOT
+
+// A unit file: header, interface section (may import units), implementation section
+// (may import units), terminated by `end.`. Initialization blocks are future work.
+unitDefinition ::= UNIT IDENTIFIER SEMICOLON INTERFACE usesClause? IMPLEMENTATION usesClause? END DOT
+
+usesClause ::= USES unitReference (COMMA unitReference)* SEMICOLON
+
+// A single imported unit, optionally with an explicit source file (`unit in 'file.pas'`).
+// Carries the reference that resolves the unit name to its declaring file.
+unitReference ::= IDENTIFIER (IN STRING)? {
+  mixin="org.pcsoft.passat.language.psi.impl.ObjectPascalUnitReferenceMixin"
+  implements="org.pcsoft.passat.language.psi.ObjectPascalUsedUnit"
+  methods=[getReference getUnitName getNameIdentifier]
+}
 
 block ::= BEGIN END

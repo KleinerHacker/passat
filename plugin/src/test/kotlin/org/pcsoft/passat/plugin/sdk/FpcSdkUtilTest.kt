@@ -52,4 +52,39 @@ class FpcSdkUtilTest {
         assertFalse(FpcSdkUtil.isValidHome(home.absolutePath))
         assertFalse(FpcSdkUtil.isValidHome(""))
     }
+
+    @Test
+    fun findsCompiledUnitDirectories() {
+        // Mirrors the FPC layout: <home>/units/<target>/<package>/*.ppu
+        val home = tempFolder.newFolder("fpc-units")
+        val rtl = home.toPath().resolve("units").resolve("x86_64-win64").resolve("rtl").toFile()
+        rtl.mkdirs()
+        java.io.File(rtl, "system.ppu").writeText("")
+        java.io.File(rtl, "sysutils.ppu").writeText("")
+        // A directory without .ppu must be ignored.
+        home.toPath().resolve("units").resolve("x86_64-win64").resolve("docs").toFile().mkdirs()
+
+        val dirs = FpcSdkUtil.findUnitDirectories(home.absolutePath)
+        assertTrue("rtl unit dir should be found", dirs.any { it.name == "rtl" })
+        assertFalse("dir without .ppu should be skipped", dirs.any { it.name == "docs" })
+    }
+
+    @Test
+    fun findsLibrarySourceDirectories() {
+        val home = tempFolder.newFolder("fpc-src")
+        val sysutils = home.toPath().resolve("source").resolve("rtl").resolve("objpas").toFile()
+        sysutils.mkdirs()
+        java.io.File(sysutils, "sysutils.pp").writeText("")
+
+        val dirs = FpcSdkUtil.findSourceDirectories(home.absolutePath)
+        assertTrue("objpas source dir should be found", dirs.any { it.name == "objpas" })
+    }
+
+    @Test
+    fun returnsEmptyUnitDirsWhenNoUnitsTree() {
+        val home = tempFolder.newFolder("fpc-bare")
+        assertTrue(FpcSdkUtil.findUnitDirectories(home.absolutePath).isEmpty())
+        assertTrue(FpcSdkUtil.findSourceDirectories(home.absolutePath).isEmpty())
+        assertTrue(FpcSdkUtil.findUnitDirectories("").isEmpty())
+    }
 }

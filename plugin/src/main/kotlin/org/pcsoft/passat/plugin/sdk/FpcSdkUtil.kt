@@ -53,6 +53,39 @@ object FpcSdkUtil {
     fun isValidHome(home: String): Boolean = findCompilerExecutable(home) != null
 
     /**
+     * Directories holding compiled units (`.ppu`) shipped with the installation, i.e. the RTL and
+     * bundled packages. The FPC layout nests these under `<home>/units/<target>/<package>/`, so we
+     * return every directory in that subtree that actually contains at least one `.ppu`. These are
+     * attached as SDK class roots so a Pascal module can resolve standard units like `SysUtils`.
+     */
+    fun findUnitDirectories(home: String): List<File> {
+        if (home.isBlank()) return emptyList()
+        val unitsRoot = File(home, "units")
+        if (!unitsRoot.isDirectory) return emptyList()
+        return unitsRoot.walkTopDown()
+            .filter { it.isDirectory && it.listFiles { _, n -> n.endsWith(".ppu", ignoreCase = true) }?.isNotEmpty() == true }
+            .toList()
+    }
+
+    /**
+     * Source directories of the standard library (`<home>/source/...`), attached as SDK source roots
+     * so resolved standard units can navigate to their `.pas`/`.pp` source. Returns the leaf
+     * directories that contain Object Pascal sources, or an empty list when no `source` tree exists.
+     */
+    fun findSourceDirectories(home: String): List<File> {
+        if (home.isBlank()) return emptyList()
+        val sourceRoot = File(home, "source")
+        if (!sourceRoot.isDirectory) return emptyList()
+        return sourceRoot.walkTopDown()
+            .filter { dir ->
+                dir.isDirectory && dir.listFiles { _, n ->
+                    n.endsWith(".pas", ignoreCase = true) || n.endsWith(".pp", ignoreCase = true)
+                }?.isNotEmpty() == true
+            }
+            .toList()
+    }
+
+    /**
      * Detects the FPC version by running `fpc -iV` (prints just the compiler version). Returns the
      * trimmed version string (e.g. `3.2.2`) or `null` if detection fails.
      */

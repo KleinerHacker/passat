@@ -17,10 +17,11 @@ written in **English**.
 
 | Area                         | Status | Notes |
 |------------------------------|:------:|-------|
-| Lexer (tokens, comments)     |   🚧   | JFlex lexer; case-insensitive keywords `program`/`begin`/`end`, identifier, `;`, `.`. No comments/literals yet |
-| Parser / grammar (PSI)       |   🚧   | Grammar-Kit; only an empty program `program X; begin end.` |
+| Lexer (tokens, comments)     |   🚧   | JFlex lexer; case-insensitive keywords `program`/`unit`/`uses`/`interface`/`implementation`/`in`/`begin`/`end`, identifier, single-quoted string, `;`, `,`, `.`. No comments yet |
+| Parser / grammar (PSI)       |   🚧   | Grammar-Kit; empty `program` and `unit` with `uses` clauses |
 | Syntax highlighting          |   🚧   | Keyword highlighting (Java keyword color, theme-aware) |
-| Units & program structure    |   🚧   | Empty `program` shell only; `unit`, `library`, `uses` missing |
+| Units & program structure    |   🚧   | `program` and `unit` (interface/implementation) shells with `uses` clauses; `library` and initialization sections missing |
+| `uses` clause resolution     |   ✅   | Completion (suggestion box) + reference resolution of imported units; unresolved units flagged red. Resolves project/module units and FPC SDK units (`.ppu`/source) |
 | Declarations                 |   ❌   | const, type, var, procedure/function |
 | Types                        |   ❌   | records, classes, enums, sets, arrays, generics |
 | Statements & expressions     |   ❌   | control flow, operators |
@@ -47,3 +48,31 @@ end.
 Lexing is case-insensitive (`PROGRAM`/`Program`/`program` are all the `program` keyword). Registered
 features: `ObjectPascalFileType` (`.pas`/`.pp`/`.lpr`), `ObjectPascalParserDefinition` and
 keyword `SyntaxHighlighter`. Everything beyond this empty-program shell is still missing.
+
+### `uses` clause — completion & resolution
+
+The grammar now accepts a `program` with an optional `uses` clause and a `unit` with `interface`/
+`implementation` sections that each may have a `uses` clause:
+
+```pascal
+program Demo;
+uses SysUtils, Classes;
+begin
+end.
+```
+
+Each imported unit is a resolvable reference. Available units are taken from the importing file's
+resolve scope, i.e. project/module units **and** the FPC SDK's units. A unit resolves by file name
+(case-insensitively) against Object Pascal sources (`.pas`/`.pp`) and compiled units (`.ppu`);
+program files (`.lpr`) are excluded. New features:
+
+- **Completion** (`completion.contributor`, in `:language`): a suggestion box listing every unit in
+  scope inside a `uses` clause.
+- **Resolution** (`ObjectPascalUsedUnitReference` via the `unitReference` mixin): Ctrl-click/navigate
+  to the declaring unit file; backed by the platform `FileTypeIndex`/`FilenameIndex` only, keeping
+  the `:language` core free of project-model dependencies.
+- **Unresolved = error** (`annotator`): an unknown unit is highlighted red.
+
+So the FPC SDK's standard units (e.g. `SysUtils`) are visible, the `:plugin` `FpcSdkType` attaches
+the installation's `units/**` (`.ppu`) as SDK class roots and `source/**` as source roots
+(`FpcSdkUtil.findUnitDirectories` / `findSourceDirectories`).

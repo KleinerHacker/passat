@@ -24,4 +24,13 @@ class SampleCodeGeneratorTest {
     fun fallsBackForEmptyName() {
         assertEquals("Program1", SampleCodeGenerator.toIdentifier("***"))
     }
+
+    @Test
+    fun generatesProgramWithSysUtilsUses() {
+        val source = SampleCodeGenerator.buildProgramSource("Demo")
+        assertEquals(
+            "program Demo;\n\nuses\n  SysUtils;\n\nbegin\nend.\n",
+            source,
+        )
+    }
 }
