@@ -1,0 +1,66 @@
+/* Passat brand theme — colors and shapes derived from the project logo (logo.png).
+   Brand blues sampled from the logo: #1f6fe0 (primary), #0050c0 (deep), #46a0fa (light accent). */
+
+:root {
+  --passat-blue: #1f6fe0;
+  --passat-blue-deep: #0050c0;
+  --passat-blue-light: #46a0fa;
+}
+
+/* Accent (links, focus, selection) uses the brand blue in both schemes. */
+[data-md-color-scheme="default"] {
+  --md-accent-fg-color: var(--passat-blue);
+  --md-typeset-a-color: var(--passat-blue-deep);
+}
+[data-md-color-scheme="slate"] {
+  --md-accent-fg-color: var(--passat-blue-light);
+  --md-typeset-a-color: var(--passat-blue-light);
+}
+
+/* --- Header: replace the site-name text with the banner image --- */
+/* Hide the textual site title … */
+.md-header__title .md-ellipsis {
+  font-size: 0;
+}
+/* … and render the banner on the title area instead. The banner swaps with the
+   color scheme so it stays legible on the white (light) / dark header. */
+.md-header__title {
+  display: flex;
+  align-items: center;
+}
+.md-header__title .md-header__topic {
+  width: 100%;
+  height: 1.8rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+[data-md-color-scheme="default"] .md-header__title .md-header__topic {
+  background-image: url(../images/banner-light.png);
+}
+[data-md-color-scheme="slate"] .md-header__title .md-header__topic {
+  background-image: url(../images/banner-dark.png);
+}
+
+/* Keep the logo icon comfortably sized in the header. */
+.md-header__button.md-logo img {
+  height: 1.9rem;
+  width: auto;
+}
+
+/* --- Page hero (the icon shown at the top of the home page) --- */
+.passat-hero {
+  text-align: center;
+  margin: 1.2rem 0 0.4rem;
+}
+.passat-hero img {
+  width: 180px;
+  max-width: 60%;
+  height: auto;
+}
+.passat-tagline {
+  text-align: center;
+  font-size: 1.05rem;
+  opacity: 0.85;
+  margin-top: 0;
+}

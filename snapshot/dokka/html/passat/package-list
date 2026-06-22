@@ -1,0 +1,161 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:org.pcsoft.passat.language.highlight////PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/index.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter.Companion///PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/-companion/index.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter.Companion/BAD_CHARACTER/#/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/-companion/-b-a-d_-c-h-a-r-a-c-t-e-r.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter.Companion/KEYWORD/#/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/-companion/-k-e-y-w-o-r-d.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter///PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/index.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter/ObjectPascalSyntaxHighlighter/#/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/-object-pascal-syntax-highlighter.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter/getHighlightingLexer/#/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/get-highlighting-lexer.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighter/getTokenHighlights/#<ERROR CLASS> ERROR CLASS: Symbol not found for IElementType/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter/get-token-highlights.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighterFactory///PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter-factory/index.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighterFactory/ObjectPascalSyntaxHighlighterFactory/#/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter-factory/-object-pascal-syntax-highlighter-factory.html
+$dokka.location:org.pcsoft.passat.language.highlight/ObjectPascalSyntaxHighlighterFactory/getSyntaxHighlighter/#<ERROR CLASS> ERROR CLASS: Symbol not found for Project??#<ERROR CLASS> ERROR CLASS: Symbol not found for VirtualFile??/PointingToDeclaration/passat/org.pcsoft.passat.language.highlight/-object-pascal-syntax-highlighter-factory/get-syntax-highlighter.html
+$dokka.location:org.pcsoft.passat.language.lexer////PointingToDeclaration/passat/org.pcsoft.passat.language.lexer/index.html
+$dokka.location:org.pcsoft.passat.language.lexer/ObjectPascalLexerAdapter///PointingToDeclaration/passat/org.pcsoft.passat.language.lexer/-object-pascal-lexer-adapter/index.html
+$dokka.location:org.pcsoft.passat.language.lexer/ObjectPascalLexerAdapter/ObjectPascalLexerAdapter/#/PointingToDeclaration/passat/org.pcsoft.passat.language.lexer/-object-pascal-lexer-adapter/-object-pascal-lexer-adapter.html
+$dokka.location:org.pcsoft.passat.language.parser////PointingToDeclaration/passat/org.pcsoft.passat.language.parser/index.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition.Companion///PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/-companion/index.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition.Companion/FILE/#/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/-companion/-f-i-l-e.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition///PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/index.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/ObjectPascalParserDefinition/#/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/-object-pascal-parser-definition.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/createElement/#<ERROR CLASS> ERROR CLASS: Symbol not found for ASTNode/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/create-element.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/createFile/#<ERROR CLASS> ERROR CLASS: Symbol not found for FileViewProvider/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/create-file.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/createLexer/#<ERROR CLASS> ERROR CLASS: Symbol not found for Project??/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/create-lexer.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/createParser/#<ERROR CLASS> ERROR CLASS: Symbol not found for Project??/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/create-parser.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/getCommentTokens/#/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/get-comment-tokens.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/getFileNodeType/#/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/get-file-node-type.html
+$dokka.location:org.pcsoft.passat.language.parser/ObjectPascalParserDefinition/getStringLiteralElements/#/PointingToDeclaration/passat/org.pcsoft.passat.language.parser/-object-pascal-parser-definition/get-string-literal-elements.html
+$dokka.location:org.pcsoft.passat.language.psi////PointingToDeclaration/passat/org.pcsoft.passat.language.psi/index.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalElementType///PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-element-type/index.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalElementType/ObjectPascalElementType/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-element-type/-object-pascal-element-type.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalFile///PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-file/index.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalFile/ObjectPascalFile/#<ERROR CLASS> ERROR CLASS: Symbol not found for FileViewProvider/PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-file/-object-pascal-file.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalFile/getFileType/#/PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-file/get-file-type.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalFile/toString/#/PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-file/to-string.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalTokenType///PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-token-type/index.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalTokenType/ObjectPascalTokenType/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-token-type/-object-pascal-token-type.html
+$dokka.location:org.pcsoft.passat.language.psi/ObjectPascalTokenType/toString/#/PointingToDeclaration/passat/org.pcsoft.passat.language.psi/-object-pascal-token-type/to-string.html
+$dokka.location:org.pcsoft.passat.language////PointingToDeclaration/passat/org.pcsoft.passat.language/index.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType.Companion///PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/-companion/index.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType.Companion/INSTANCE/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/-companion/-i-n-s-t-a-n-c-e.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType///PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/index.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType/getDefaultExtension/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/get-default-extension.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType/getDescription/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/get-description.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType/getIcon/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/get-icon.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalFileType/getName/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-file-type/get-name.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalIcons///PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-icons/index.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalIcons/File/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-icons/-file.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalLanguage///PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-language/index.html
+$dokka.location:org.pcsoft.passat.language/ObjectPascalLanguage/getDisplayName/#/PointingToDeclaration/passat/org.pcsoft.passat.language/-object-pascal-language/get-display-name.html
+$dokka.location:org.pcsoft.passat.plugin.i18n////PointingToDeclaration/passat/org.pcsoft.passat.plugin.i18n/index.html
+$dokka.location:org.pcsoft.passat.plugin.i18n/PassatBundle///PointingToDeclaration/passat/org.pcsoft.passat.plugin.i18n/-passat-bundle/index.html
+$dokka.location:org.pcsoft.passat.plugin.i18n/PassatBundle/lazyMessage/#kotlin.String#vararg(kotlin.Any)/PointingToDeclaration/passat/org.pcsoft.passat.plugin.i18n/-passat-bundle/lazy-message.html
+$dokka.location:org.pcsoft.passat.plugin.i18n/PassatBundle/message/#kotlin.String#vararg(kotlin.Any)/PointingToDeclaration/passat/org.pcsoft.passat.plugin.i18n/-passat-bundle/message.html
+$dokka.location:org.pcsoft.passat.plugin.icon////PointingToDeclaration/passat/org.pcsoft.passat.plugin.icon/index.html
+$dokka.location:org.pcsoft.passat.plugin.icon/PassatIcons///PointingToDeclaration/passat/org.pcsoft.passat.plugin.icon/-passat-icons/index.html
+$dokka.location:org.pcsoft.passat.plugin.icon/PassatIcons/FpcSdk/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.icon/-passat-icons/-fpc-sdk.html
+$dokka.location:org.pcsoft.passat.plugin.icon/PassatIcons/PascalModule/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.icon/-passat-icons/-pascal-module.html
+$dokka.location:org.pcsoft.passat.plugin.module////PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/index.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder///PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/index.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/PascalModuleBuilder/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/-pascal-module-builder.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/createWizardSteps/#<ERROR CLASS> ERROR CLASS: Symbol not found for WizardContext#<ERROR CLASS> ERROR CLASS: Symbol not found for ModulesProvider/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/create-wizard-steps.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/getDescription/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/get-description.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/getModuleType/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/get-module-type.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/getNodeIcon/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/get-node-icon.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/getPresentableName/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/get-presentable-name.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/isSuitableSdkType/#<ERROR CLASS> ERROR CLASS: Symbol not found for SdkTypeId/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/is-suitable-sdk-type.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/setupRootModel/#<ERROR CLASS> ERROR CLASS: Symbol not found for ModifiableRootModel/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/setup-root-model.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleBuilder/withSampleCode/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-builder/with-sample-code.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleConfigurationEditorProvider///PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-configuration-editor-provider/index.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleConfigurationEditorProvider/PascalModuleConfigurationEditorProvider/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-configuration-editor-provider/-pascal-module-configuration-editor-provider.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleConfigurationEditorProvider/createEditors/#<ERROR CLASS> ERROR CLASS: Symbol not found for ModuleConfigurationState/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-configuration-editor-provider/create-editors.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor///PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/index.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor/PascalModuleEditor/#<ERROR CLASS> ERROR CLASS: Symbol not found for ModuleConfigurationState/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/-pascal-module-editor.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor/createComponentImpl/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/create-component-impl.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor/getDisplayName/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/get-display-name.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor/moduleStateChanged/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/module-state-changed.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor/reset/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/reset.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleEditor/saveData/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-editor/save-data.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType.Companion///PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/-companion/index.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType.Companion/ID/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/-companion/-i-d.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType.Companion/getInstance/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/-companion/get-instance.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType///PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/index.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType/PascalModuleType/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/-pascal-module-type.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType/createModuleBuilder/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/create-module-builder.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType/getDescription/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/get-description.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType/getName/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/get-name.html
+$dokka.location:org.pcsoft.passat.plugin.module/PascalModuleType/getNodeIcon/#kotlin.Boolean/PointingToDeclaration/passat/org.pcsoft.passat.plugin.module/-pascal-module-type/get-node-icon.html
+$dokka.location:org.pcsoft.passat.plugin.sdk////PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalData.Companion///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data/-companion/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalData.Companion/load/#<ERROR CLASS> ERROR CLASS: Symbol not found for Element/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data/-companion/load.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalData///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalData/FpcSdkAdditionalData/#org.pcsoft.passat.plugin.sdk.PascalLanguageVersion/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data/-fpc-sdk-additional-data.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalData/languageVersion/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data/language-version.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalData/save/#<ERROR CLASS> ERROR CLASS: Symbol not found for Element/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data/save.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable/FpcSdkAdditionalDataConfigurable/#<ERROR CLASS> ERROR CLASS: Symbol not found for SdkModificator/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/-fpc-sdk-additional-data-configurable.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable/apply/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/apply.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable/createComponent/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/create-component.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable/isModified/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/is-modified.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable/reset/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/reset.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkAdditionalDataConfigurable/setSdk/#<ERROR CLASS> ERROR CLASS: Symbol not found for Sdk/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-additional-data-configurable/set-sdk.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType.Companion///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/-companion/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType.Companion/getInstance/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/-companion/get-instance.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType.Companion/isFpcSdk/#<ERROR CLASS> ERROR CLASS: Symbol not found for SdkTypeId??/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/-companion/is-fpc-sdk.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/FpcSdkType/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/-fpc-sdk-type.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/createAdditionalDataConfigurable/#<ERROR CLASS> ERROR CLASS: Symbol not found for SdkModel#<ERROR CLASS> ERROR CLASS: Symbol not found for SdkModificator/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/create-additional-data-configurable.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/getIcon/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/get-icon.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/getIconForAddAction/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/get-icon-for-add-action.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/getInvalidHomeMessage/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/get-invalid-home-message.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/getPresentableName/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/get-presentable-name.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/getVersionString/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/get-version-string.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/isValidSdkHome/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/is-valid-sdk-home.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/loadAdditionalData/#<ERROR CLASS> ERROR CLASS: Symbol not found for Sdk#<ERROR CLASS> ERROR CLASS: Symbol not found for Element/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/load-additional-data.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/saveAdditionalData/#<ERROR CLASS> ERROR CLASS: Symbol not found for SdkAdditionalData#<ERROR CLASS> ERROR CLASS: Symbol not found for Element/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/save-additional-data.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/suggestHomePath/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/suggest-home-path.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/suggestHomePaths/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/suggest-home-paths.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkType/suggestSdkName/#kotlin.String?#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-type/suggest-sdk-name.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkUtil///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-util/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkUtil/detectVersion/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-util/detect-version.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkUtil/findCompilerExecutable/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-util/find-compiler-executable.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/FpcSdkUtil/isValidHome/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-fpc-sdk-util/is-valid-home.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.Companion///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-companion/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.Companion/DEFAULT/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-companion/-d-e-f-a-u-l-t.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.Companion/defaultFor/#kotlin.String?/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-companion/default-for.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.Companion/fromNameOrDefault/#kotlin.String?/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-companion/from-name-or-default.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.DELPHI///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-d-e-l-p-h-i/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.FPC///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-f-p-c/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.ISO///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-i-s-o/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.MACPAS///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-m-a-c-p-a-s/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.OBJFPC///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-o-b-j-f-p-c/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion.TP///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/-t-p/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion///PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/index.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion/displayName/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/display-name.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion/fpcMode/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/fpc-mode.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion/valueOf/#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/value-of.html
+$dokka.location:org.pcsoft.passat.plugin.sdk/PascalLanguageVersion/values/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.sdk/-pascal-language-version/values.html
+$dokka.location:org.pcsoft.passat.plugin.wizard////PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/index.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalModuleWizardStep///PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-module-wizard-step/index.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalModuleWizardStep/PascalModuleWizardStep/#org.pcsoft.passat.plugin.module.PascalModuleBuilder/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-module-wizard-step/-pascal-module-wizard-step.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalModuleWizardStep/getComponent/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-module-wizard-step/get-component.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalModuleWizardStep/updateDataModel/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-module-wizard-step/update-data-model.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalNewProjectWizard///PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-new-project-wizard/index.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalNewProjectWizard/PascalNewProjectWizard/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-new-project-wizard/-pascal-new-project-wizard.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalNewProjectWizard/createStep/#<ERROR CLASS> ERROR CLASS: Symbol not found for WizardContext/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-new-project-wizard/create-step.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalNewProjectWizard/icon/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-new-project-wizard/icon.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalNewProjectWizard/id/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-new-project-wizard/id.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/PascalNewProjectWizard/name/#/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-pascal-new-project-wizard/name.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/SampleCodeGenerator///PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-sample-code-generator/index.html
+$dokka.location:org.pcsoft.passat.plugin.wizard/SampleCodeGenerator/generate/#<ERROR CLASS> ERROR CLASS: Symbol not found for VirtualFile#kotlin.String/PointingToDeclaration/passat/org.pcsoft.passat.plugin.wizard/-sample-code-generator/generate.html
+org.pcsoft.passat.language
+org.pcsoft.passat.language.highlight
+org.pcsoft.passat.language.lexer
+org.pcsoft.passat.language.parser
+org.pcsoft.passat.language.psi
+org.pcsoft.passat.plugin.i18n
+org.pcsoft.passat.plugin.icon
+org.pcsoft.passat.plugin.module
+org.pcsoft.passat.plugin.sdk
+org.pcsoft.passat.plugin.wizard
