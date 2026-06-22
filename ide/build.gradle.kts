@@ -16,3 +16,11 @@ dependencies {
         intellijIdea(libs.versions.platform.get())
     }
 }
+
+// SCAFFOLD ONLY: there is no standalone-IDE assembly yet. Disable the auto-registered run/build
+// tasks so an unqualified `./gradlew runIde` (or buildPlugin) does not launch/produce a second,
+// redundant artifact alongside the real `:plugin` ones. Use `:plugin:runIde` for development.
+tasks {
+    runIde { enabled = false }
+    buildPlugin { enabled = false }
+}

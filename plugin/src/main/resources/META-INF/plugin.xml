@@ -31,6 +31,20 @@
     <!-- Extensions defined by the plugin (project/module model, toolchain, run/build/debug).
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <!-- FPC compiler registered as a first-class SDK (the JDK analogy for Pascal). -->
+        <sdkType implementation="org.pcsoft.passat.plugin.sdk.FpcSdkType"/>
+
+        <!-- Dedicated Pascal module type and its new-module builder. -->
+        <moduleType id="PASCAL_MODULE"
+                    implementationClass="org.pcsoft.passat.plugin.module.PascalModuleType"/>
+        <moduleBuilder builderClass="org.pcsoft.passat.plugin.module.PascalModuleBuilder"/>
+
+        <!-- "Pascal" template selectable in the New Project wizard. -->
+        <newProjectWizard.generator implementation="org.pcsoft.passat.plugin.wizard.PascalNewProjectWizard"/>
+
+        <!-- Adds the "Pascal" tab in Project Structure; Sources/Dependencies come from the platform. -->
+        <moduleConfigurationEditorProvider
+            implementation="org.pcsoft.passat.plugin.module.PascalModuleConfigurationEditorProvider"/>
     </extensions>
 
 </idea-plugin>

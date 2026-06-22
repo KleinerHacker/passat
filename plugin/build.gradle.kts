@@ -28,6 +28,15 @@ changelog {
     path = rootProject.file("CHANGELOG.md").canonicalPath
 }
 
+// Passat targets Object Pascal, not Java. Disable the bundled Java plugin in the development
+// sandbox so the IDE offers only the FPC SDK (no JDK) and no Java language level — matching the
+// intended Pascal-only product. This affects runIde only, not the shipped plugin.
+tasks {
+    prepareSandbox {
+        disabledPlugins.add("com.intellij.java")
+    }
+}
+
 intellijPlatform {
     pluginConfiguration {
         // Render the plugin change notes from CHANGELOG.md (current project version, else Unreleased).
