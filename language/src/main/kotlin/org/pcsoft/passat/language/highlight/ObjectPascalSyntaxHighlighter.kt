@@ -23,7 +23,15 @@ class ObjectPascalSyntaxHighlighter : SyntaxHighlighterBase() {
     override fun getHighlightingLexer(): Lexer = ObjectPascalLexerAdapter()
 
     override fun getTokenHighlights(tokenType: IElementType): Array<TextAttributesKey> = when (tokenType) {
-        ObjectPascalTypes.PROGRAM, ObjectPascalTypes.BEGIN, ObjectPascalTypes.END -> KEYWORD_KEYS
+        ObjectPascalTypes.PROGRAM,
+        ObjectPascalTypes.UNIT,
+        ObjectPascalTypes.USES,
+        ObjectPascalTypes.INTERFACE,
+        ObjectPascalTypes.IMPLEMENTATION,
+        ObjectPascalTypes.IN,
+        ObjectPascalTypes.BEGIN,
+        ObjectPascalTypes.END -> KEYWORD_KEYS
+        ObjectPascalTypes.STRING -> STRING_KEYS
         TokenType.BAD_CHARACTER -> BAD_CHARACTER_KEYS
         else -> EMPTY_KEYS
     }
@@ -31,10 +39,13 @@ class ObjectPascalSyntaxHighlighter : SyntaxHighlighterBase() {
     companion object {
         val KEYWORD: TextAttributesKey =
             createTextAttributesKey("PASSAT_PASCAL_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD)
+        val STRING: TextAttributesKey =
+            createTextAttributesKey("PASSAT_PASCAL_STRING", DefaultLanguageHighlighterColors.STRING)
         val BAD_CHARACTER: TextAttributesKey =
             createTextAttributesKey("PASSAT_PASCAL_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER)
 
         private val KEYWORD_KEYS = arrayOf(KEYWORD)
+        private val STRING_KEYS = arrayOf(STRING)
         private val BAD_CHARACTER_KEYS = arrayOf(BAD_CHARACTER)
         private val EMPTY_KEYS = emptyArray<TextAttributesKey>()
     }

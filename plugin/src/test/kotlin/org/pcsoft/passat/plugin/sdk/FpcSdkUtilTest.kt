@@ -3,6 +3,7 @@ package org.pcsoft.passat.plugin.sdk
 import com.intellij.openapi.util.SystemInfo
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -86,5 +87,22 @@ class FpcSdkUtilTest {
         assertTrue(FpcSdkUtil.findUnitDirectories(home.absolutePath).isEmpty())
         assertTrue(FpcSdkUtil.findSourceDirectories(home.absolutePath).isEmpty())
         assertTrue(FpcSdkUtil.findUnitDirectories("").isEmpty())
+    }
+
+    @Test
+    fun detectVersionReturnsNullForMissingCompiler() {
+        val home = tempFolder.newFolder("fpc-noexe")
+        assertNull(FpcSdkUtil.detectVersion(home.absolutePath))
+    }
+
+    @Test
+    fun detectVersionReturnsNullWhenCompilerCannotRun() {
+        // A non-executable stub must not throw (e.g. no EDT/process assertions) — it returns null.
+        val home = tempFolder.newFolder("fpc-badexe")
+        val bin = home.toPath().resolve("bin").toFile()
+        bin.mkdirs()
+        java.io.File(bin, exe("fpc")).writeText("not a real executable")
+
+        assertNull(FpcSdkUtil.detectVersion(home.absolutePath))
     }
 }

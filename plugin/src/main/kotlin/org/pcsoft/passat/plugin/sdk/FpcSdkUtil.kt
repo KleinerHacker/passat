@@ -1,10 +1,9 @@
 package org.pcsoft.passat.plugin.sdk
 
-import com.intellij.execution.configurations.GeneralCommandLine
-import com.intellij.execution.util.ExecUtil
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.util.SystemInfo
 import java.io.File
+import java.util.concurrent.TimeUnit
 
 /**
  * Pure helpers for locating and interrogating a Free Pascal Compiler installation. Kept free of any
@@ -88,13 +87,24 @@ object FpcSdkUtil {
     /**
      * Detects the FPC version by running `fpc -iV` (prints just the compiler version). Returns the
      * trimmed version string (e.g. `3.2.2`) or `null` if detection fails.
+     *
+     * Uses a plain [ProcessBuilder] rather than the platform's `ExecUtil`/`OSProcessHandler`: the
+     * latter asserts it is not called on the EDT, but [com.intellij.openapi.projectRoots.SdkType]
+     * version/name hooks are invoked synchronously on the EDT while adding an SDK. The `-iV` call
+     * returns almost instantly; a short timeout guards against a hung process.
      */
     fun detectVersion(home: String): String? {
         val exe = findCompilerExecutable(home) ?: return null
         return try {
-            val commandLine = GeneralCommandLine(exe.absolutePath, "-iV")
-            val output = ExecUtil.execAndGetOutput(commandLine, 5_000)
-            if (output.exitCode == 0) output.stdout.trim().ifEmpty { null } else null
+            val process = ProcessBuilder(exe.absolutePath, "-iV")
+                .redirectErrorStream(true)
+                .start()
+            val output = process.inputStream.bufferedReader().use { it.readText() }
+            if (!process.waitFor(5, TimeUnit.SECONDS)) {
+                process.destroyForcibly()
+                return null
+            }
+            if (process.exitValue() == 0) output.trim().ifEmpty { null } else null
         } catch (e: Exception) {
             LOG.info("Failed to detect FPC version for home '$home'", e)
             null

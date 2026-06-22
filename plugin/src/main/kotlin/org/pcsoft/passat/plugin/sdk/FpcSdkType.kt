@@ -1,6 +1,6 @@
 package org.pcsoft.passat.plugin.sdk
 
-import com.intellij.openapi.application.runWriteAction
+import com.intellij.openapi.application.WriteAction
 import com.intellij.openapi.projectRoots.AdditionalDataConfigurable
 import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.projectRoots.SdkAdditionalData
@@ -69,7 +69,9 @@ class FpcSdkType : SdkType("FPC") {
         val modificator = sdk.sdkModificator
         addRoots(modificator, unitDirs, OrderRootType.CLASSES)
         addRoots(modificator, sourceDirs, OrderRootType.SOURCES)
-        runWriteAction { modificator.commitChanges() }
+        // setupSdkPaths may be invoked off the EDT (ProjectSdksModel), but commitChanges() needs a
+        // write action on the EDT — runAndWait switches threads and takes the write lock.
+        WriteAction.runAndWait<RuntimeException> { modificator.commitChanges() }
     }
 
     private fun addRoots(modificator: SdkModificator, dirs: List<File>, rootType: OrderRootType) {

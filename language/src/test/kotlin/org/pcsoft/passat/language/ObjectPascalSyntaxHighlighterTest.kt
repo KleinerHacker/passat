@@ -16,13 +16,35 @@ class ObjectPascalSyntaxHighlighterTest : BasePlatformTestCase() {
     private val highlighter = ObjectPascalSyntaxHighlighter()
 
     fun testKeywordsGetKeywordColor() {
-        for (keyword in listOf(ObjectPascalTypes.PROGRAM, ObjectPascalTypes.BEGIN, ObjectPascalTypes.END)) {
+        val keywords = listOf(
+            ObjectPascalTypes.PROGRAM,
+            ObjectPascalTypes.UNIT,
+            ObjectPascalTypes.USES,
+            ObjectPascalTypes.INTERFACE,
+            ObjectPascalTypes.IMPLEMENTATION,
+            ObjectPascalTypes.IN,
+            ObjectPascalTypes.BEGIN,
+            ObjectPascalTypes.END,
+        )
+        for (keyword in keywords) {
             assertEquals(
                 "Keyword $keyword should map to the keyword color",
                 listOf(ObjectPascalSyntaxHighlighter.KEYWORD),
                 keysFor(keyword),
             )
         }
+    }
+
+    fun testStringLiteralGetsStringColor() {
+        assertEquals(
+            listOf(ObjectPascalSyntaxHighlighter.STRING),
+            keysFor(ObjectPascalTypes.STRING),
+        )
+    }
+
+    /** A program with a `uses` clause highlights all of its keywords (`program`, `uses`, `begin`, `end`). */
+    fun testHighlightingLexerScansUsesClause() {
+        assertKeywordCount("program Demo;\nuses SysUtils;\nbegin\nend.\n", 4)
     }
 
     fun testNonKeywordsHaveNoHighlight() {
