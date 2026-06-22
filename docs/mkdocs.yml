@@ -1,0 +1,73 @@
+site_name: Passat
+site_description: An Open-Platform IDE for Object Pascal, built on the IntelliJ Platform.
+site_author: PC-Software
+
+# Built by the Gradle :buildDocs task (working dir = docs/) into the project build folder.
+site_dir: ../build/docs
+docs_dir: docs
+
+theme:
+  name: material
+  logo: assets/images/icon.png
+  favicon: assets/images/icon.png
+  features:
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - toc.follow
+  palette:
+    # Light mode — white header follows the mode.
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Dark mode — dark header follows the mode.
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - API Docs: dokka/html/index.html
+  - Licences: licences/index.html
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: zh
+          name: 简体中文
+          build: true
+        - locale: ja
+          name: 日本語
+          build: true
+        - locale: ko
+          name: 한국어
+          build: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
