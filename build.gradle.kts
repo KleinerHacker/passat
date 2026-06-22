@@ -7,7 +7,7 @@
 
 plugins {
     id("org.jetbrains.dokka") version "2.2.0"
-    id("org.jetbrains.kotlinx.kover") version "0.9.1"
+    id("org.jetbrains.kotlinx.kover") version "0.9.8"
     id("com.github.jk1.dependency-license-report") version "2.5"
     id("org.cyclonedx.bom") version "3.2.4"
     // Applied per-module (see subprojects block) because licensee requires a language/platform
