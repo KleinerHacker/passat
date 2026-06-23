@@ -20,6 +20,50 @@ class ObjectPascalUsesCompletionTest : BasePlatformTestCase() {
         assertContainsElements(suggestions, "LocalHelper", "system")
     }
 
+    fun testSuggestionsStillOfferedAfterAnExistingUnit() {
+        // Pressing Ctrl+Space on a second unit (something already follows `uses`) must still list units.
+        myFixture.addFileToProject("FirstUnit.pas", "unit FirstUnit;\ninterface\nimplementation\nend.\n")
+        myFixture.addFileToProject("SecondUnit.pas", "unit SecondUnit;\ninterface\nimplementation\nend.\n")
+
+        myFixture.configureByText("Main.pas", "program P;\nuses FirstUnit, <caret>;\nbegin\nend.\n")
+        myFixture.completeBasic()
+
+        val suggestions = myFixture.lookupElementStrings ?: emptyList()
+        assertContainsElements(suggestions, "SecondUnit")
+    }
+
+    fun testSuggestionsOfferedWhenCaretInsideExistingUnit() {
+        // Ctrl+Space while the caret sits inside an already-typed unit name must still suggest units
+        // matching the prefix before the caret (regression: this previously returned nothing).
+        myFixture.addFileToProject("SysUtils.pas", "unit SysUtils;\ninterface\nimplementation\nend.\n")
+        myFixture.addFileToProject("SyncObjs.pas", "unit SyncObjs;\ninterface\nimplementation\nend.\n")
+        myFixture.addFileToProject("Classes.pas", "unit Classes;\ninterface\nimplementation\nend.\n")
+
+        // Caret after "Sy", inside the existing identifier "SysUtils".
+        myFixture.configureByText("Main.pas", "program P;\nuses Sy<caret>sUtils;\nbegin\nend.\n")
+        myFixture.completeBasic()
+
+        val suggestions = myFixture.lookupElementStrings ?: emptyList()
+        assertContainsElements(suggestions, "SysUtils", "SyncObjs")
+        assertDoesntContain(suggestions, "Classes") // prefix "Sy" filters this out
+    }
+
+    fun testSuggestionBoxShowsOriginatingFileAsTail() {
+        myFixture.addFileToProject("LocalHelper.pas", "unit LocalHelper;\ninterface\nimplementation\nend.\n")
+        myFixture.addFileToProject("system.ppu", "compiled-unit-stub")
+
+        myFixture.configureByText("Main.pas", "program P;\nuses <caret>;\nbegin\nend.\n")
+        myFixture.completeBasic()
+
+        val tails = myFixture.lookupElements.orEmpty().associate { element ->
+            val presentation = com.intellij.codeInsight.lookup.LookupElementPresentation()
+            element.renderElement(presentation)
+            presentation.itemText to presentation.tailText
+        }
+        assertEquals("  LocalHelper.pas", tails["LocalHelper"])
+        assertEquals("  system.ppu", tails["system"])
+    }
+
     fun testProgramFilesAreNotOfferedAsUnits() {
         // .lpr is a program file, not an importable unit, and must not appear.
         myFixture.addFileToProject("Launcher.lpr", "program Launcher;\nbegin\nend.\n")

@@ -1,6 +1,7 @@
 package org.pcsoft.passat.plugin.sdk
 
 import com.intellij.openapi.util.SystemInfo
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -87,6 +88,51 @@ class FpcSdkUtilTest {
         assertTrue(FpcSdkUtil.findUnitDirectories(home.absolutePath).isEmpty())
         assertTrue(FpcSdkUtil.findSourceDirectories(home.absolutePath).isEmpty())
         assertTrue(FpcSdkUtil.findUnitDirectories("").isEmpty())
+    }
+
+    @Test
+    fun expandToValidHomesFindsVersionedSubdirectory() {
+        // Mirrors the Windows installer layout: the user picks C:\FPC, but the real home is the
+        // versioned subdir C:\FPC\3.2.2 holding bin\<arch>\ppcross*.exe.
+        val base = tempFolder.newFolder("FPC")
+        val arch = base.toPath().resolve("3.2.2").resolve("bin").resolve("i386-win32").toFile()
+        arch.mkdirs()
+        java.io.File(arch, exe("ppcrossx64")).writeText("")
+
+        val homes = FpcSdkUtil.expandToValidHomes(base.absolutePath)
+        assertEquals(1, homes.size)
+        assertTrue(homes.single().endsWith("3.2.2"))
+    }
+
+    @Test
+    fun expandToValidHomesReturnsBaseWhenItselfValid() {
+        val home = tempFolder.newFolder("fpc-direct")
+        val bin = home.toPath().resolve("bin").toFile()
+        bin.mkdirs()
+        java.io.File(bin, exe("fpc")).writeText("")
+
+        assertEquals(listOf(home.absolutePath), FpcSdkUtil.expandToValidHomes(home.absolutePath))
+    }
+
+    @Test
+    fun expandToValidHomesPrefersNewestVersionFirst() {
+        val base = tempFolder.newFolder("FPC-multi")
+        for (v in listOf("3.0.4", "3.2.2")) {
+            val arch = base.toPath().resolve(v).resolve("bin").resolve("i386-win32").toFile()
+            arch.mkdirs()
+            java.io.File(arch, exe("ppcrossx64")).writeText("")
+        }
+
+        val homes = FpcSdkUtil.expandToValidHomes(base.absolutePath)
+        assertEquals(2, homes.size)
+        assertTrue(homes.first().endsWith("3.2.2"))
+    }
+
+    @Test
+    fun expandToValidHomesEmptyForNonHome() {
+        val empty = tempFolder.newFolder("nothing-here")
+        assertTrue(FpcSdkUtil.expandToValidHomes(empty.absolutePath).isEmpty())
+        assertTrue(FpcSdkUtil.expandToValidHomes("").isEmpty())
     }
 
     @Test

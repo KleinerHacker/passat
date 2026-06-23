@@ -28,11 +28,27 @@ object PascalUnits {
         return sources + compiled
     }
 
+    /** An importable unit: its name and the file that provides it (a `.pas`/`.pp` or `.ppu`). */
+    data class Unit(val name: String, val file: VirtualFile)
+
     /** All importable unit names visible in [scope], de-duplicated case-insensitively and sorted. */
     fun availableUnitNames(project: Project, scope: GlobalSearchScope): List<String> {
         val names = sortedSetOf(String.CASE_INSENSITIVE_ORDER)
         candidateFiles(project, scope).forEach { names.add(it.nameWithoutExtension) }
         return names.toList()
+    }
+
+    /**
+     * All importable units visible in [scope] with their providing file, sorted by name and
+     * de-duplicated case-insensitively (the first file wins when several share a name). Used by
+     * completion to show each unit's originating file alongside its name.
+     */
+    fun availableUnits(project: Project, scope: GlobalSearchScope): List<Unit> {
+        val byName = sortedMapOf<String, Unit>(String.CASE_INSENSITIVE_ORDER)
+        candidateFiles(project, scope).forEach { file ->
+            byName.putIfAbsent(file.nameWithoutExtension, Unit(file.nameWithoutExtension, file))
+        }
+        return byName.values.toList()
     }
 
     /** The file providing the unit named [name] in [scope], or `null` if none is visible. */

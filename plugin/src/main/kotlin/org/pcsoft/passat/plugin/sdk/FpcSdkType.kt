@@ -40,7 +40,10 @@ class FpcSdkType : SdkType("FPC") {
             "C:\\FPC",
             "C:\\lazarus\\fpc",
         )
-        return candidates.filter { FpcSdkUtil.isValidHome(it) }
+        // The Windows installer nests the actual home one level deeper in a version directory
+        // (e.g. C:\FPC\3.2.2), so each base that is not itself a valid home is also expanded into
+        // its immediate subdirectories.
+        return candidates.flatMap { base -> FpcSdkUtil.expandToValidHomes(base) }.distinct()
     }
 
     override fun isValidSdkHome(path: String): Boolean = FpcSdkUtil.isValidHome(path)

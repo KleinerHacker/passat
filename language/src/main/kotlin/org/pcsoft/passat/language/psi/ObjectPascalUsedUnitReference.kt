@@ -1,9 +1,9 @@
 package org.pcsoft.passat.language.psi
 
-import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReferenceBase
+import org.pcsoft.passat.language.completion.UnitLookupElements
 
 /**
  * Resolves an imported unit name to the file that provides it. Available units are taken from the
@@ -28,7 +28,5 @@ class ObjectPascalUsedUnitReference(
     }
 
     override fun getVariants(): Array<Any> =
-        PascalUnits.availableUnitNames(element.project, element.resolveScope)
-            .map { LookupElementBuilder.create(it) }
-            .toTypedArray()
+        UnitLookupElements.forScope(element.project, element.resolveScope).toTypedArray()
 }

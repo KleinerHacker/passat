@@ -52,6 +52,25 @@ object FpcSdkUtil {
     fun isValidHome(home: String): Boolean = findCompilerExecutable(home) != null
 
     /**
+     * Resolves a base directory to the FPC homes it (transitively) contains. If [base] is itself a
+     * valid home it is returned as-is; otherwise its immediate subdirectories are probed, which
+     * covers the common versioned layout `C:\FPC\<version>` (the Windows installer puts the real
+     * home one level below the directory the user picks). Returns an empty list when nothing valid
+     * is found.
+     */
+    fun expandToValidHomes(base: String): List<String> {
+        if (base.isBlank()) return emptyList()
+        if (isValidHome(base)) return listOf(base)
+        val dir = File(base)
+        if (!dir.isDirectory) return emptyList()
+        return dir.listFiles { f -> f.isDirectory }
+            ?.map { it.absolutePath }
+            ?.filter { isValidHome(it) }
+            ?.sortedDescending() // prefer the newest version directory first
+            ?: emptyList()
+    }
+
+    /**
      * Directories holding compiled units (`.ppu`) shipped with the installation, i.e. the RTL and
      * bundled packages. The FPC layout nests these under `<home>/units/<target>/<package>/`, so we
      * return every directory in that subtree that actually contains at least one `.ppu`. These are
