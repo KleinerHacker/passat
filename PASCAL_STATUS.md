@@ -73,6 +73,9 @@ program files (`.lpr`) are excluded. New features:
   to the declaring unit file; backed by the platform `FileTypeIndex`/`FilenameIndex` only, keeping
   the `:language` core free of project-model dependencies.
 - **Unresolved = error** (`annotator`): an unknown unit is highlighted red.
+- **Name vs. file name = warning** (`ObjectPascalMismatchedNameAnnotator`): a `program`/`unit` whose
+  declared name differs from its file's base name (compared case-insensitively) is underlined yellow;
+  a quickfix renames the declaration to the file name (without extension).
 
 So the FPC SDK's standard units (e.g. `SysUtils`) are visible, the `:plugin` `FpcSdkType` attaches
 the installation's `units/**` (`.ppu`) as SDK class roots and `source/**` as source roots

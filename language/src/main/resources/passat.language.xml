@@ -42,6 +42,9 @@
         <annotator
             language="ObjectPascal"
             implementationClass="org.pcsoft.passat.language.annotator.ObjectPascalMissingDefinitionAnnotator"/>
+        <annotator
+            language="ObjectPascal"
+            implementationClass="org.pcsoft.passat.language.annotator.ObjectPascalMismatchedNameAnnotator"/>
         <intentionAction>
             <language>ObjectPascal</language>
             <className>org.pcsoft.passat.language.intention.CreateProgramSkeletonFix</className>
