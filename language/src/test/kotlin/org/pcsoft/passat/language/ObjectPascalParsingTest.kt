@@ -20,6 +20,12 @@ class ObjectPascalParsingTest : ParsingTestCase("", "pas", ObjectPascalParserDef
     /** A unit with `uses` clauses in both the interface and implementation sections. */
     fun testUnitWithUses() = doTest(true)
 
+    /** A unit with optional `initialization` and `finalization` sections (in that order). */
+    fun testUnitWithInitialization() = doTest(true)
+
+    /** Both sections are independent: a unit may have only `finalization`. */
+    fun testUnitWithFinalizationOnly() = doTest(true)
+
     override fun getTestDataPath(): String = "src/test/resources/testData"
 
     override fun skipSpaces(): Boolean = true

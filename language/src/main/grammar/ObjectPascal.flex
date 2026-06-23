@@ -37,6 +37,8 @@ STRING='([^'\r\n]|'')*'
   "uses"             { return ObjectPascalTypes.USES; }
   "interface"        { return ObjectPascalTypes.INTERFACE; }
   "implementation"   { return ObjectPascalTypes.IMPLEMENTATION; }
+  "initialization"   { return ObjectPascalTypes.INITIALIZATION; }
+  "finalization"     { return ObjectPascalTypes.FINALIZATION; }
   "in"               { return ObjectPascalTypes.IN; }
   "begin"            { return ObjectPascalTypes.BEGIN; }
   "end"              { return ObjectPascalTypes.END; }

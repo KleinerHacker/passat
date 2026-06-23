@@ -17,10 +17,10 @@ written in **English**.
 
 | Area                         | Status | Notes |
 |------------------------------|:------:|-------|
-| Lexer (tokens, comments)     |   🚧   | JFlex lexer; case-insensitive keywords `program`/`unit`/`uses`/`interface`/`implementation`/`in`/`begin`/`end`, identifier, single-quoted string, `;`, `,`, `.`. No comments yet |
-| Parser / grammar (PSI)       |   🚧   | Grammar-Kit; empty `program` and `unit` with `uses` clauses |
+| Lexer (tokens, comments)     |   🚧   | JFlex lexer; case-insensitive keywords `program`/`unit`/`uses`/`interface`/`implementation`/`initialization`/`finalization`/`in`/`begin`/`end`, identifier, single-quoted string, `;`, `,`, `.`. No comments yet |
+| Parser / grammar (PSI)       |   🚧   | Grammar-Kit; empty `program` and `unit` (with optional `initialization`/`finalization` sections) with `uses` clauses |
 | Syntax highlighting          |   🚧   | Keyword highlighting (Java keyword color, theme-aware) |
-| Units & program structure    |   🚧   | `program` and `unit` (interface/implementation) shells with `uses` clauses; `library` and initialization sections missing |
+| Units & program structure    |   🚧   | `program` and `unit` (interface/implementation, optional `initialization`/`finalization`) shells with `uses` clauses; `library` and section statements missing |
 | `uses` clause resolution     |   ✅   | Completion (suggestion box) + reference resolution of imported units; unresolved units flagged red. Resolves project/module units and FPC SDK units (`.ppu`/source) |
 | Declarations                 |   ❌   | const, type, var, procedure/function |
 | Types                        |   ❌   | records, classes, enums, sets, arrays, generics |
@@ -52,7 +52,8 @@ keyword `SyntaxHighlighter`. Everything beyond this empty-program shell is still
 ### `uses` clause — completion & resolution
 
 The grammar now accepts a `program` with an optional `uses` clause and a `unit` with `interface`/
-`implementation` sections that each may have a `uses` clause:
+`implementation` sections that each may have a `uses` clause, plus optional `initialization` and
+`finalization` sections (in that order):
 
 ```pascal
 program Demo;

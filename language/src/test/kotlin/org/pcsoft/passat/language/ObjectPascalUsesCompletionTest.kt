@@ -20,6 +20,18 @@ class ObjectPascalUsesCompletionTest : BasePlatformTestCase() {
         assertContainsElements(suggestions, "LocalHelper", "system")
     }
 
+    fun testSuggestionsOfferedBeforeTerminatingSemicolon() {
+        // While still typing the clause (the closing `;` is not there yet), unit suggestions must
+        // already appear right after `uses` — waiting for the `;` would be useless for writing code.
+        myFixture.addFileToProject("LocalHelper.pas", "unit LocalHelper;\ninterface\nimplementation\nend.\n")
+
+        myFixture.configureByText("Main.pas", "program P;\nuses <caret>")
+        myFixture.completeBasic()
+
+        val suggestions = myFixture.lookupElementStrings ?: emptyList()
+        assertContainsElements(suggestions, "LocalHelper")
+    }
+
     fun testSuggestionsStillOfferedAfterAnExistingUnit() {
         // Pressing Ctrl+Space on a second unit (something already follows `uses`) must still list units.
         myFixture.addFileToProject("FirstUnit.pas", "unit FirstUnit;\ninterface\nimplementation\nend.\n")

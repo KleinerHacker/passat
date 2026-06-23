@@ -27,9 +27,13 @@ import org.pcsoft.passat.language.parser.psi.ObjectPascalTypes
  * - `implementation` — after the `interface` keyword (and its optional `uses` clause).
  * - `uses` — after the program header (`program X;`) while still above the first `begin`
  *   (outside the block); also right after a unit's `interface`/`implementation` section keyword.
+ * - `initialization` — after a unit's `implementation` section (and its optional `uses` clause).
+ * - `finalization` — after a unit's `initialization` keyword, or directly after `implementation`
+ *   (the section is independently optional, so a unit may have only `finalization`).
  * - `begin` — at a program's top level after the header and after the last `uses` clause
  *   (i.e. where the main block starts).
- * - `end` — inside an open `begin` block (more `begin` than `end` seen so far).
+ * - `end` — inside an open `begin` block (more `begin` than `end` seen so far), or as a unit's
+ *   terminating `end` after its `implementation`/`initialization`/`finalization` section.
  */
 class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
     init {
@@ -58,10 +62,16 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                     if (ctx.allowsUses) {
                         result.addElement(keyword("uses"))
                     }
+                    if (ctx.allowsInitialization) {
+                        result.addElement(keyword("initialization"))
+                    }
+                    if (ctx.allowsFinalization) {
+                        result.addElement(keyword("finalization"))
+                    }
                     if (ctx.allowsBegin) {
                         result.addElement(keyword("begin"))
                     }
-                    if (ctx.openBlocks > 0) {
+                    if (ctx.openBlocks > 0 || ctx.allowsUnitEnd) {
                         result.addElement(keyword("end"))
                     }
                 }
@@ -76,7 +86,10 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
         private val hasUnit: Boolean,
         private val hasInterface: Boolean,
         private val hasImplementation: Boolean,
+        private val hasInitialization: Boolean,
+        private val hasFinalization: Boolean,
         private val hasUses: Boolean,
+        private val endCount: Int,
         private val openBlocksValue: Int,
         private val lastMeaningful: IElementType?,
     ) {
@@ -102,6 +115,37 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                 (lastMeaningful == ObjectPascalTypes.INTERFACE || lastMeaningful == ObjectPascalTypes.SEMICOLON)
 
         /**
+         * `initialization` opens the unit's optional initialization section — directly after the
+         * `implementation` keyword or after the optional `uses` clause that closes it (a `;`).
+         */
+        val allowsInitialization: Boolean
+            get() = hasImplementation && !hasInitialization && endCount == 0 &&
+                (lastMeaningful == ObjectPascalTypes.IMPLEMENTATION || lastMeaningful == ObjectPascalTypes.SEMICOLON)
+
+        /**
+         * `finalization` is an independent optional section: it may follow the `initialization`
+         * keyword or, when there is no initialization section, the `implementation` section directly
+         * (after its keyword or optional `uses` clause).
+         */
+        val allowsFinalization: Boolean
+            get() = hasImplementation && !hasFinalization && endCount == 0 &&
+                (lastMeaningful == ObjectPascalTypes.INITIALIZATION ||
+                    lastMeaningful == ObjectPascalTypes.IMPLEMENTATION ||
+                    lastMeaningful == ObjectPascalTypes.SEMICOLON)
+
+        /**
+         * A unit's terminating `end` is valid once the `implementation` section is open and the unit
+         * has not been terminated yet — directly after `implementation` (and its optional `uses`
+         * clause) or after the `initialization`/`finalization` keyword.
+         */
+        val allowsUnitEnd: Boolean
+            get() = hasImplementation && endCount == 0 && openBlocksValue == 0 &&
+                (lastMeaningful == ObjectPascalTypes.IMPLEMENTATION ||
+                    lastMeaningful == ObjectPascalTypes.SEMICOLON ||
+                    lastMeaningful == ObjectPascalTypes.INITIALIZATION ||
+                    lastMeaningful == ObjectPascalTypes.FINALIZATION)
+
+        /**
          * `begin` (the main block) is valid at a program's top level after the header and after the
          * last `uses` clause — i.e. once a `;` has closed the preceding statement and no block is open.
          */
@@ -123,6 +167,8 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                 var hasUnit = false
                 var hasInterface = false
                 var hasImplementation = false
+                var hasInitialization = false
+                var hasFinalization = false
                 var hasUses = false
                 for (token in tokens) {
                     when (token.elementType) {
@@ -132,6 +178,8 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                         ObjectPascalTypes.UNIT -> hasUnit = true
                         ObjectPascalTypes.INTERFACE -> hasInterface = true
                         ObjectPascalTypes.IMPLEMENTATION -> hasImplementation = true
+                        ObjectPascalTypes.INITIALIZATION -> hasInitialization = true
+                        ObjectPascalTypes.FINALIZATION -> hasFinalization = true
                         ObjectPascalTypes.USES -> hasUses = true
                     }
                 }
@@ -141,7 +189,10 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                     hasUnit = hasUnit,
                     hasInterface = hasInterface,
                     hasImplementation = hasImplementation,
+                    hasInitialization = hasInitialization,
+                    hasFinalization = hasFinalization,
                     hasUses = hasUses,
+                    endCount = ends,
                     openBlocksValue = (begins - ends).coerceAtLeast(0),
                     lastMeaningful = tokens.lastOrNull()?.elementType,
                 )

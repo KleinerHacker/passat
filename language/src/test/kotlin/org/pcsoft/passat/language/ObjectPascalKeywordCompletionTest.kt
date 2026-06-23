@@ -114,4 +114,44 @@ class ObjectPascalKeywordCompletionTest : BasePlatformTestCase() {
     fun testImplementationNotOfferedTwice() {
         assertDoesntContain(completionsAt("unit U;\ninterface\nimplementation\n<caret>"), "implementation")
     }
+
+    fun testInitializationFinalizationAndEndOfferedAfterImplementation() {
+        // Both sections are independently optional, so a unit may have only `finalization`.
+        val suggestions = completionsAt("unit U;\ninterface\nimplementation\n<caret>")
+        assertContainsElements(suggestions, "initialization", "finalization", "end")
+    }
+
+    fun testInitializationOfferedAfterImplementationUses() {
+        assertContainsElements(
+            completionsAt("unit U;\ninterface\nimplementation\nuses SysUtils;\n<caret>"),
+            "initialization",
+            "end",
+        )
+    }
+
+    fun testFinalizationAndEndOfferedAfterInitialization() {
+        val suggestions = completionsAt("unit U;\ninterface\nimplementation\ninitialization\n<caret>")
+        assertContainsElements(suggestions, "finalization", "end")
+        // The initialization section already exists, so do not offer it again.
+        assertDoesntContain(suggestions, "initialization")
+    }
+
+    fun testEndOfferedAfterFinalization() {
+        val suggestions = completionsAt("unit U;\ninterface\nimplementation\ninitialization\nfinalization\n<caret>")
+        assertContainsElements(suggestions, "end")
+        assertDoesntContain(suggestions, "finalization")
+        // `initialization` must precede `finalization`, so it is not offered afterwards.
+        assertDoesntContain(suggestions, "initialization")
+    }
+
+    fun testEndOfferedAfterFinalizationOnly() {
+        // A unit with only a `finalization` section: after it, just `end`.
+        val suggestions = completionsAt("unit U;\ninterface\nimplementation\nfinalization\n<caret>")
+        assertContainsElements(suggestions, "end")
+        assertDoesntContain(suggestions, "finalization", "initialization")
+    }
+
+    fun testInitializationNotOfferedInProgram() {
+        assertDoesntContain(completionsAt("program P;\n<caret>"), "initialization")
+    }
 }

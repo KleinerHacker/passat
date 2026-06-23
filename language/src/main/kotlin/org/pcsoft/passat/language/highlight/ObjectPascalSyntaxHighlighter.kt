@@ -28,6 +28,8 @@ class ObjectPascalSyntaxHighlighter : SyntaxHighlighterBase() {
         ObjectPascalTypes.USES,
         ObjectPascalTypes.INTERFACE,
         ObjectPascalTypes.IMPLEMENTATION,
+        ObjectPascalTypes.INITIALIZATION,
+        ObjectPascalTypes.FINALIZATION,
         ObjectPascalTypes.IN,
         ObjectPascalTypes.BEGIN,
         ObjectPascalTypes.END -> KEYWORD_KEYS

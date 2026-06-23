@@ -31,6 +31,8 @@
     USES="uses"
     INTERFACE="interface"
     IMPLEMENTATION="implementation"
+    INITIALIZATION="initialization"
+    FINALIZATION="finalization"
     IN="in"
     BEGIN="begin"
     END="end"
@@ -45,10 +47,14 @@ pascalFile ::= programDefinition | unitDefinition
 programDefinition ::= PROGRAM IDENTIFIER SEMICOLON usesClause? block DOT
 
 // A unit file: header, interface section (may import units), implementation section
-// (may import units), terminated by `end.`. Initialization blocks are future work.
-unitDefinition ::= UNIT IDENTIFIER SEMICOLON INTERFACE usesClause? IMPLEMENTATION usesClause? END DOT
+// (may import units), an optional `initialization` and an optional `finalization` section (each
+// independent, but in this order), terminated by `end.`. Statements inside the sections are future
+// work.
+unitDefinition ::= UNIT IDENTIFIER SEMICOLON INTERFACE usesClause? IMPLEMENTATION usesClause? INITIALIZATION? FINALIZATION? END DOT
 
-usesClause ::= USES unitReference (COMMA unitReference)* SEMICOLON
+// `pin=1`: once `uses` is matched the clause node is created even while the rest is still being
+// typed (before the terminating `;`), so unit-name completion works immediately after `uses`.
+usesClause ::= USES unitReference (COMMA unitReference)* SEMICOLON { pin=1 }
 
 // A single imported unit, optionally with an explicit source file (`unit in 'file.pas'`).
 // Carries the reference that resolves the unit name to its declaring file.
