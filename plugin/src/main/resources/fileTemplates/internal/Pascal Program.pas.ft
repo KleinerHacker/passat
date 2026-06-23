@@ -1,0 +1,4 @@
+program ${NAME};
+
+begin
+end.

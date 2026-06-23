@@ -45,6 +45,10 @@
         <!-- Adds the "Pascal" tab in Project Structure; Sources/Dependencies come from the platform. -->
         <moduleConfigurationEditorProvider
             implementation="org.pcsoft.passat.plugin.module.PascalModuleConfigurationEditorProvider"/>
+
+        <!-- Templates backing the "New Object Pascal File" action (resources/fileTemplates/internal). -->
+        <internalFileTemplate name="Pascal Unit"/>
+        <internalFileTemplate name="Pascal Program"/>
     </extensions>
 
     <!-- Supplies compiled units' real internal names (read from .ppu via ppudump) to the language
@@ -52,5 +56,13 @@
     <extensions defaultExtensionNs="org.pcsoft.passat.language">
         <unitNameProvider implementation="org.pcsoft.passat.plugin.sdk.ppu.FpcPpuUnitNameProvider"/>
     </extensions>
+
+    <!-- "New > Object Pascal File" entry in the project-view / file context New menu. -->
+    <actions>
+        <action id="Passat.NewPascalFile"
+                class="org.pcsoft.passat.plugin.action.CreatePascalFileAction">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
 
 </idea-plugin>

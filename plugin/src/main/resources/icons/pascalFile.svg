@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <path d="M 4.5,8.2 a 2.875,2.875 0 1,0 5.75,0 a 2.875,2.875 0 1,0 -5.75,0 Z M 5.9,8.2 a 1.438,1.438 0 1,1 2.875,0 a 1.438,1.438 0 1,1 -2.875,0 Z" fill="#1f6fe0" fill-rule="evenodd"/>
+  <rect x="1.25" y="5.312" width="6.0" height="1.625" rx="0.312" fill="#96a3b0"/>
+  <rect x="2.062" y="6.938" width="4.375" height="5.562" fill="#cdd6e0"/>
+  <line x1="2.792" y1="7.125" x2="2.792" y2="12.312" stroke="#6e7c8c" stroke-width="0.156"/><line x1="3.521" y1="7.125" x2="3.521" y2="12.312" stroke="#6e7c8c" stroke-width="0.156"/><line x1="4.25" y1="7.125" x2="4.25" y2="12.312" stroke="#6e7c8c" stroke-width="0.156"/><line x1="4.979" y1="7.125" x2="4.979" y2="12.312" stroke="#6e7c8c" stroke-width="0.156"/><line x1="5.708" y1="7.125" x2="5.708" y2="12.312" stroke="#6e7c8c" stroke-width="0.156"/>
+  <rect x="1.688" y="12.5" width="5.125" height="0.938" fill="#96a3b0"/>
+  <rect x="1.125" y="13.438" width="6.25" height="1.25" rx="0.312" fill="#6e7c8c"/>
+</svg>
