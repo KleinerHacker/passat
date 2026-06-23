@@ -22,7 +22,9 @@ import org.pcsoft.passat.language.parser.psi.ObjectPascalTypes
  * Suggests structural keywords only where they are grammatically meaningful, deduced from the tokens
  * preceding the caret:
  *
- * - `program` — at the very start of the file (root, before anything else).
+ * - `program` / `unit` — at the very start of the file (root, before anything else).
+ * - `interface` — after a unit header (`unit X;`), opening the unit's interface section.
+ * - `implementation` — after the `interface` keyword (and its optional `uses` clause).
  * - `uses` — after the program header (`program X;`) while still above the first `begin`
  *   (outside the block); also right after a unit's `interface`/`implementation` section keyword.
  * - `begin` — at a program's top level after the header and after the last `uses` clause
@@ -44,7 +46,14 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
 
                     if (ctx.isEmpty) {
                         result.addElement(keyword("program"))
+                        result.addElement(keyword("unit"))
                         return
+                    }
+                    if (ctx.allowsInterface) {
+                        result.addElement(keyword("interface"))
+                    }
+                    if (ctx.allowsImplementation) {
+                        result.addElement(keyword("implementation"))
                     }
                     if (ctx.allowsUses) {
                         result.addElement(keyword("uses"))
@@ -64,6 +73,9 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
     private class TokenContext(
         val isEmpty: Boolean,
         private val hasProgram: Boolean,
+        private val hasUnit: Boolean,
+        private val hasInterface: Boolean,
+        private val hasImplementation: Boolean,
         private val hasUses: Boolean,
         private val openBlocksValue: Int,
         private val lastMeaningful: IElementType?,
@@ -75,6 +87,19 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
             get() = (hasProgram && openBlocksValue == 0 && !hasUses && lastMeaningful == ObjectPascalTypes.SEMICOLON) ||
                 lastMeaningful == ObjectPascalTypes.INTERFACE ||
                 lastMeaningful == ObjectPascalTypes.IMPLEMENTATION
+
+        /** `interface` opens a unit's interface section, right after the `unit X;` header. */
+        val allowsInterface: Boolean
+            get() = hasUnit && !hasInterface && openBlocksValue == 0 &&
+                lastMeaningful == ObjectPascalTypes.SEMICOLON
+
+        /**
+         * `implementation` follows the interface section — directly after the `interface` keyword
+         * or after the optional `uses` clause that closes it (a `;`).
+         */
+        val allowsImplementation: Boolean
+            get() = hasInterface && !hasImplementation &&
+                (lastMeaningful == ObjectPascalTypes.INTERFACE || lastMeaningful == ObjectPascalTypes.SEMICOLON)
 
         /**
          * `begin` (the main block) is valid at a program's top level after the header and after the
@@ -95,18 +120,27 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                 var begins = 0
                 var ends = 0
                 var hasProgram = false
+                var hasUnit = false
+                var hasInterface = false
+                var hasImplementation = false
                 var hasUses = false
                 for (token in tokens) {
                     when (token.elementType) {
                         ObjectPascalTypes.BEGIN -> begins++
                         ObjectPascalTypes.END -> ends++
                         ObjectPascalTypes.PROGRAM -> hasProgram = true
+                        ObjectPascalTypes.UNIT -> hasUnit = true
+                        ObjectPascalTypes.INTERFACE -> hasInterface = true
+                        ObjectPascalTypes.IMPLEMENTATION -> hasImplementation = true
                         ObjectPascalTypes.USES -> hasUses = true
                     }
                 }
                 return TokenContext(
                     isEmpty = tokens.isEmpty(),
                     hasProgram = hasProgram,
+                    hasUnit = hasUnit,
+                    hasInterface = hasInterface,
+                    hasImplementation = hasImplementation,
                     hasUses = hasUses,
                     openBlocksValue = (begins - ends).coerceAtLeast(0),
                     lastMeaningful = tokens.lastOrNull()?.elementType,

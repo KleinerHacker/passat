@@ -36,5 +36,18 @@
         <annotator
             language="ObjectPascal"
             implementationClass="org.pcsoft.passat.language.annotator.ObjectPascalUnresolvedUnitAnnotator"/>
+        <annotator
+            language="ObjectPascal"
+            implementationClass="org.pcsoft.passat.language.annotator.ObjectPascalMissingDefinitionAnnotator"/>
+        <intentionAction>
+            <language>ObjectPascal</language>
+            <className>org.pcsoft.passat.language.intention.CreateProgramSkeletonFix</className>
+            <category>Object Pascal</category>
+        </intentionAction>
+        <intentionAction>
+            <language>ObjectPascal</language>
+            <className>org.pcsoft.passat.language.intention.CreateUnitSkeletonFix</className>
+            <category>Object Pascal</category>
+        </intentionAction>
     </extensions>
 </idea-plugin>

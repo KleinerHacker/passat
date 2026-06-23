@@ -81,4 +81,37 @@ class ObjectPascalKeywordCompletionTest : BasePlatformTestCase() {
     fun testUsesOfferedAfterUnitImplementation() {
         assertContainsElements(completionsAt("unit U;\ninterface\nimplementation\n<caret>"), "uses")
     }
+
+    fun testUnitOfferedAtRootOfEmptyFile() {
+        val suggestions = completionsAt("<caret>")
+        assertContainsElements(suggestions, "unit", "program")
+    }
+
+    fun testInterfaceOfferedAfterUnitHeader() {
+        assertContainsElements(completionsAt("unit U;\n<caret>"), "interface")
+    }
+
+    fun testInterfaceNotOfferedAtRoot() {
+        assertDoesntContain(completionsAt("<caret>"), "interface")
+    }
+
+    fun testInterfaceNotOfferedTwice() {
+        assertDoesntContain(completionsAt("unit U;\ninterface\n<caret>"), "interface")
+    }
+
+    fun testImplementationOfferedAfterInterface() {
+        assertContainsElements(completionsAt("unit U;\ninterface\n<caret>"), "implementation")
+    }
+
+    fun testImplementationOfferedAfterInterfaceUses() {
+        assertContainsElements(completionsAt("unit U;\ninterface\nuses SysUtils;\n<caret>"), "implementation")
+    }
+
+    fun testImplementationNotOfferedBeforeInterface() {
+        assertDoesntContain(completionsAt("unit U;\n<caret>"), "implementation")
+    }
+
+    fun testImplementationNotOfferedTwice() {
+        assertDoesntContain(completionsAt("unit U;\ninterface\nimplementation\n<caret>"), "implementation")
+    }
 }
