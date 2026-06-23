@@ -1,0 +1,1498 @@
+[
+  {
+    "Type": "unit",
+    "Name": "System",
+    "Version": 207,
+    "TargetCPU": "x86_64",
+    "TargetOS": "Win64-x64",
+    "CRC": "5F9D7A80",
+    "InterfaceCRC": "3E1F6B99",
+    "Files": [
+      {
+        "Type": "file",
+        "Name": "system.pp",
+        "Time": "2021-03-14 15:38:28"
+      },
+      {
+        "Type": "file",
+        "Name": "systemh.inc",
+        "Time": "2021-03-14 15:38:24"
+      },
+      {
+        "Type": "file",
+        "Name": "sysosh.inc",
+        "Time": "2021-03-14 15:38:38"
+      }
+    ],
+    "Interface": [
+      {
+        "Type": "const",
+        "Name": "False",
+        "SymId": 7208,
+        "Pos": {
+          "File": 1,
+          "Line": 17,
+          "Col": 1
+        },
+        "ValType": "int",
+        "Value": 0,
+        "TypeRef": {
+          "Id": 15
+        }
+      },
+      {
+        "Type": "const",
+        "Name": "True",
+        "SymId": 7209,
+        "Pos": {
+          "File": 1,
+          "Line": 17,
+          "Col": 1
+        },
+        "ValType": "int",
+        "Value": 1,
+        "TypeRef": {
+          "Id": 15
+        }
+      },
+      {
+        "Type": "const",
+        "Name": "CP_ACP",
+        "SymId": 7210,
+        "Pos": {
+          "File": 2,
+          "Line": 96,
+          "Col": 3
+        },
+        "ValType": "int",
+        "Value": 0,
+        "TypeRef": {
+          "Id": 6
+        }
+      },
+      {
+        "Type": "type",
+        "Name": "Extended",
+        "SymId": 7116,
+        "Pos": {
+          "File": 1,
+          "Line": 17,
+          "Col": 1
+        },
+        "Ref": {
+          "Id": 33
+        }
+      },
+      {
+        "Type": "type",
+        "Name": "CExtended",
+        "SymId": 7117,
+        "Pos": {
+          "File": 1,
+          "Line": 17,
+          "Col": 1
+        },
+        "Ref": {
+          "Id": 33
+        }
+      },
+      {
+        "Type": "type",
+        "Name": "$void_pointer",
+        "SymId": 7118,
+        "Pos": {
+          "File": 1,
+          "Line": 17,
+          "Col": 1
+        },
+        "Ref": {
+          "Id": 4
+        }
+      },
+      {
+        "Type": "var",
+        "Name": "LibModuleList",
+        "SymId": 33,
+        "Pos": {
+          "File": 3,
+          "Line": 114,
+          "Col": 3
+        },
+        "VarType": {
+          "Id": 153
+        }
+      },
+      {
+        "Type": "var",
+        "Name": "Max_Frame_Dump",
+        "SymId": 7422,
+        "Pos": {
+          "File": 2,
+          "Line": 676,
+          "Col": 3
+        },
+        "VarType": {
+          "Id": 7
+        }
+      },
+      {
+        "Type": "proc",
+        "Name": "OleStrToString",
+        "Id": 147,
+        "SymId": 3412,
+        "Pos": {
+          "File": 3,
+          "Line": 73,
+          "Col": 10
+        },
+        "Options": [
+          "function",
+          "inline"
+        ],
+        "RetType": {
+          "Id": 30
+        },
+        "Params": [
+          {
+            "Type": "param",
+            "Name": "source",
+            "SymId": 3410,
+            "Pos": {
+              "File": 3,
+              "Line": 73,
+              "Col": 25
+            },
+            "VarType": {
+              "Id": 128
+            }
+          }
+        ]
+      },
+      {
+        "Type": "proc",
+        "Name": "OleStrToStrVar",
+        "Id": 148,
+        "SymId": 3415,
+        "Pos": {
+          "File": 3,
+          "Line": 74,
+          "Col": 11
+        },
+        "Options": [
+          "procedure",
+          "inline"
+        ],
+        "RetType": {
+          "Id": 3
+        },
+        "Params": [
+          {
+            "Type": "param",
+            "Name": "source",
+            "SymId": 3413,
+            "Pos": {
+              "File": 3,
+              "Line": 74,
+              "Col": 26
+            },
+            "VarType": {
+              "Id": 128
+            }
+          },
+          {
+            "Type": "param",
+            "Name": "dest",
+            "SymId": 3414,
+            "Pos": {
+              "File": 3,
+              "Line": 74,
+              "Col": 49
+            },
+            "VarType": {
+              "Id": 30
+            },
+            "Spez": "var"
+          }
+        ]
+      },
+      {
+        "Type": "proc",
+        "Name": "OleStrToStrVar",
+        "Id": 149,
+        "SymId": 3415,
+        "Pos": {
+          "File": 3,
+          "Line": 74,
+          "Col": 11
+        },
+        "Options": [
+          "procedure",
+          "inline"
+        ],
+        "RetType": {
+          "Id": 3
+        },
+        "Params": [
+          {
+            "Type": "param",
+            "Name": "source",
+            "SymId": 3416,
+            "Pos": {
+              "File": 3,
+              "Line": 75,
+              "Col": 26
+            },
+            "VarType": {
+              "Id": 128
+            }
+          },
+          {
+            "Type": "param",
+            "Name": "dest",
+            "SymId": 3417,
+            "Pos": {
+              "File": 3,
+              "Line": 75,
+              "Col": 49
+            },
+            "VarType": {
+              "Id": 28
+            },
+            "Spez": "var"
+          }
+        ]
+      },
+      {
+        "Type": "proc",
+        "Name": "StringToOleStr",
+        "Id": 150,
+        "SymId": 3419,
+        "Pos": {
+          "File": 3,
+          "Line": 76,
+          "Col": 10
+        },
+        "Options": [
+          "function",
+          "inline"
+        ],
+        "RetType": {
+          "Id": 128
+        },
+        "Params": [
+          {
+            "Type": "param",
+            "Name": "source",
+            "SymId": 3418,
+            "Pos": {
+              "File": 3,
+              "Line": 76,
+              "Col": 31
+            },
+            "VarType": {
+              "Id": 28
+            },
+            "Spez": "const"
+          }
+        ]
+      },
+      {
+        "Type": "obj",
+        "Name": "TObject",
+        "Id": 742,
+        "SymId": 4652,
+        "Pos": {
+          "File": 16,
+          "Line": 76,
+          "Col": 18
+        },
+        "ObjType": "class",
+        "Ancestor": null,
+        "Size": 8,
+        "Fields": [
+          {
+            "Type": "proc",
+            "Name": "Create",
+            "Id": 780,
+            "SymId": 1771,
+            "Pos": {
+              "File": 16,
+              "Line": 206,
+              "Col": 23
+            },
+            "Options": [
+              "constructor"
+            ],
+            "RetType": {
+              "Id": 742
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 781,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "Destroy",
+            "Id": 782,
+            "SymId": 1772,
+            "Pos": {
+              "File": 16,
+              "Line": 208,
+              "Col": 22
+            },
+            "Options": [
+              "destructor",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 783,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "newinstance",
+            "Id": 784,
+            "SymId": 1789,
+            "Pos": {
+              "File": 16,
+              "Line": 209,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 742
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 785,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "FreeInstance",
+            "Id": 786,
+            "SymId": 1790,
+            "Pos": {
+              "File": 16,
+              "Line": 210,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": []
+          },
+          {
+            "Type": "proc",
+            "Name": "SafeCallException",
+            "Id": 787,
+            "SymId": 1815,
+            "Pos": {
+              "File": 16,
+              "Line": 211,
+              "Col": 20
+            },
+            "Options": [
+              "function",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 76
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "exceptobject",
+                "SymId": 4660,
+                "Pos": {
+                  "File": 16,
+                  "Line": 211,
+                  "Col": 38
+                },
+                "VarType": {
+                  "Id": 742
+                }
+              },
+              {
+                "Type": "param",
+                "Name": "exceptaddr",
+                "SymId": 4661,
+                "Pos": {
+                  "File": 16,
+                  "Line": 212,
+                  "Col": 13
+                },
+                "VarType": {
+                  "Id": 4
+                }
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "DefaultHandler",
+            "Id": 788,
+            "SymId": 1843,
+            "Pos": {
+              "File": 16,
+              "Line": 213,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "message",
+                "SymId": 4663,
+                "Pos": {
+                  "File": 16,
+                  "Line": 213,
+                  "Col": 40
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "var"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "Free",
+            "Id": 789,
+            "SymId": 1773,
+            "Pos": {
+              "File": 16,
+              "Line": 215,
+              "Col": 21
+            },
+            "Options": [
+              "procedure"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": []
+          },
+          {
+            "Type": "proc",
+            "Name": "InitInstance",
+            "Id": 790,
+            "SymId": 1786,
+            "Pos": {
+              "File": 16,
+              "Line": 216,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod",
+              "inline"
+            ],
+            "RetType": {
+              "Id": 742
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "instance",
+                "SymId": 4666,
+                "Pos": {
+                  "File": 16,
+                  "Line": 216,
+                  "Col": 39
+                },
+                "VarType": {
+                  "Id": 4
+                }
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 791,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "CleanupInstance",
+            "Id": 792,
+            "SymId": 1850,
+            "Pos": {
+              "File": 16,
+              "Line": 217,
+              "Col": 21
+            },
+            "Options": [
+              "procedure"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": []
+          },
+          {
+            "Type": "proc",
+            "Name": "ClassType",
+            "Id": 793,
+            "SymId": 1791,
+            "Pos": {
+              "File": 16,
+              "Line": 218,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod",
+              "inline"
+            ],
+            "RetType": {
+              "Id": 744
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 794,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "ClassInfo",
+            "Id": 795,
+            "SymId": 1816,
+            "Pos": {
+              "File": 16,
+              "Line": 219,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 4
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 796,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "ClassName",
+            "Id": 797,
+            "SymId": 1817,
+            "Pos": {
+              "File": 16,
+              "Line": 220,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 26
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 798,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "ClassNameIs",
+            "Id": 799,
+            "SymId": 1818,
+            "Pos": {
+              "File": 16,
+              "Line": 221,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "name",
+                "SymId": 4673,
+                "Pos": {
+                  "File": 16,
+                  "Line": 221,
+                  "Col": 44
+                },
+                "VarType": {
+                  "Id": 26
+                },
+                "Spez": "const"
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 800,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "ClassParent",
+            "Id": 801,
+            "SymId": 1787,
+            "Pos": {
+              "File": 16,
+              "Line": 222,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod",
+              "inline"
+            ],
+            "RetType": {
+              "Id": 744
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 802,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "InstanceSize",
+            "Id": 803,
+            "SymId": 1774,
+            "Pos": {
+              "File": 16,
+              "Line": 223,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod",
+              "inline"
+            ],
+            "RetType": {
+              "Id": 12
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 804,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "InheritsFrom",
+            "Id": 805,
+            "SymId": 1820,
+            "Pos": {
+              "File": 16,
+              "Line": 224,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "aclass",
+                "SymId": 4677,
+                "Pos": {
+                  "File": 16,
+                  "Line": 224,
+                  "Col": 39
+                },
+                "VarType": {
+                  "Id": 744
+                }
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 806,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "StringMessageTable",
+            "Id": 807,
+            "SymId": 1821,
+            "Pos": {
+              "File": 16,
+              "Line": 225,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 750
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 808,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "MethodAddress",
+            "Id": 809,
+            "SymId": 1799,
+            "Pos": {
+              "File": 16,
+              "Line": 227,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 4
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "name",
+                "SymId": 4680,
+                "Pos": {
+                  "File": 16,
+                  "Line": 227,
+                  "Col": 46
+                },
+                "VarType": {
+                  "Id": 26
+                },
+                "Spez": "const"
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 810,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "MethodName",
+            "Id": 811,
+            "SymId": 1803,
+            "Pos": {
+              "File": 16,
+              "Line": 228,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 26
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "address",
+                "SymId": 4682,
+                "Pos": {
+                  "File": 16,
+                  "Line": 228,
+                  "Col": 37
+                },
+                "VarType": {
+                  "Id": 4
+                }
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 812,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "FieldAddress",
+            "Id": 813,
+            "SymId": 1814,
+            "Pos": {
+              "File": 16,
+              "Line": 229,
+              "Col": 20
+            },
+            "Options": [
+              "function"
+            ],
+            "RetType": {
+              "Id": 4
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "name",
+                "SymId": 4685,
+                "Pos": {
+                  "File": 16,
+                  "Line": 229,
+                  "Col": 39
+                },
+                "VarType": {
+                  "Id": 26
+                },
+                "Spez": "const"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "AfterConstruction",
+            "Id": 814,
+            "SymId": 1851,
+            "Pos": {
+              "File": 16,
+              "Line": 232,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": []
+          },
+          {
+            "Type": "proc",
+            "Name": "BeforeDestruction",
+            "Id": 815,
+            "SymId": 1852,
+            "Pos": {
+              "File": 16,
+              "Line": 233,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": []
+          },
+          {
+            "Type": "proc",
+            "Name": "DefaultHandlerStr",
+            "Id": 816,
+            "SymId": 1844,
+            "Pos": {
+              "File": 16,
+              "Line": 236,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "message",
+                "SymId": 4689,
+                "Pos": {
+                  "File": 16,
+                  "Line": 236,
+                  "Col": 43
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "var"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "Dispatch",
+            "Id": 817,
+            "SymId": 1834,
+            "Pos": {
+              "File": 16,
+              "Line": 239,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "message",
+                "SymId": 4691,
+                "Pos": {
+                  "File": 16,
+                  "Line": 239,
+                  "Col": 34
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "var"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "DispatchStr",
+            "Id": 818,
+            "SymId": 1842,
+            "Pos": {
+              "File": 16,
+              "Line": 240,
+              "Col": 21
+            },
+            "Options": [
+              "procedure",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 3
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "message",
+                "SymId": 4693,
+                "Pos": {
+                  "File": 16,
+                  "Line": 240,
+                  "Col": 37
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "var"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterface",
+            "Id": 819,
+            "SymId": 1868,
+            "Pos": {
+              "File": 16,
+              "Line": 243,
+              "Col": 20
+            },
+            "Options": [
+              "function"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "iid",
+                "SymId": 4695,
+                "Pos": {
+                  "File": 16,
+                  "Line": 243,
+                  "Col": 39
+                },
+                "VarType": {
+                  "Id": 759
+                },
+                "Spez": "const"
+              },
+              {
+                "Type": "param",
+                "Name": "obj",
+                "SymId": 4696,
+                "Pos": {
+                  "File": 16,
+                  "Line": 243,
+                  "Col": 56
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "out"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterface",
+            "Id": 820,
+            "SymId": 1868,
+            "Pos": {
+              "File": 16,
+              "Line": 243,
+              "Col": 20
+            },
+            "Options": [
+              "function"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "iidstr",
+                "SymId": 4698,
+                "Pos": {
+                  "File": 16,
+                  "Line": 244,
+                  "Col": 39
+                },
+                "VarType": {
+                  "Id": 26
+                },
+                "Spez": "const"
+              },
+              {
+                "Type": "param",
+                "Name": "obj",
+                "SymId": 4699,
+                "Pos": {
+                  "File": 16,
+                  "Line": 244,
+                  "Col": 64
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "out"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterfaceByStr",
+            "Id": 821,
+            "SymId": 1874,
+            "Pos": {
+              "File": 16,
+              "Line": 245,
+              "Col": 20
+            },
+            "Options": [
+              "function"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "iidstr",
+                "SymId": 4701,
+                "Pos": {
+                  "File": 16,
+                  "Line": 245,
+                  "Col": 44
+                },
+                "VarType": {
+                  "Id": 26
+                },
+                "Spez": "const"
+              },
+              {
+                "Type": "param",
+                "Name": "obj",
+                "SymId": 4702,
+                "Pos": {
+                  "File": 16,
+                  "Line": 245,
+                  "Col": 70
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "out"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterfaceWeak",
+            "Id": 822,
+            "SymId": 1871,
+            "Pos": {
+              "File": 16,
+              "Line": 246,
+              "Col": 20
+            },
+            "Options": [
+              "function"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "iid",
+                "SymId": 4704,
+                "Pos": {
+                  "File": 16,
+                  "Line": 246,
+                  "Col": 43
+                },
+                "VarType": {
+                  "Id": 759
+                },
+                "Spez": "const"
+              },
+              {
+                "Type": "param",
+                "Name": "obj",
+                "SymId": 4705,
+                "Pos": {
+                  "File": 16,
+                  "Line": 246,
+                  "Col": 60
+                },
+                "VarType": {
+                  "Id": 1
+                },
+                "Spez": "out"
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterfaceEntry",
+            "Id": 823,
+            "SymId": 1878,
+            "Pos": {
+              "File": 16,
+              "Line": 247,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 765
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "iid",
+                "SymId": 4707,
+                "Pos": {
+                  "File": 16,
+                  "Line": 247,
+                  "Col": 50
+                },
+                "VarType": {
+                  "Id": 759
+                },
+                "Spez": "const"
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 824,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterfaceEntryByStr",
+            "Id": 825,
+            "SymId": 1882,
+            "Pos": {
+              "File": 16,
+              "Line": 248,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 765
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "iidstr",
+                "SymId": 4709,
+                "Pos": {
+                  "File": 16,
+                  "Line": 248,
+                  "Col": 55
+                },
+                "VarType": {
+                  "Id": 26
+                },
+                "Spez": "const"
+              }
+            ]
+          },
+          {
+            "Type": "classref",
+            "Id": 826,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "GetInterfaceTable",
+            "Id": 827,
+            "SymId": 1883,
+            "Pos": {
+              "File": 16,
+              "Line": 249,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 751
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 828,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "UnitName",
+            "Id": 829,
+            "SymId": 1889,
+            "Pos": {
+              "File": 16,
+              "Line": 252,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 28
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 830,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "QualifiedClassName",
+            "Id": 831,
+            "SymId": 1892,
+            "Pos": {
+              "File": 16,
+              "Line": 253,
+              "Col": 26
+            },
+            "Options": [
+              "function",
+              "classmethod"
+            ],
+            "RetType": {
+              "Id": 28
+            },
+            "Params": []
+          },
+          {
+            "Type": "classref",
+            "Id": 832,
+            "Ref": {
+              "Id": 742
+            }
+          },
+          {
+            "Type": "proc",
+            "Name": "Equals",
+            "Id": 833,
+            "SymId": 1893,
+            "Pos": {
+              "File": 16,
+              "Line": 254,
+              "Col": 20
+            },
+            "Options": [
+              "function",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 15
+            },
+            "Params": [
+              {
+                "Type": "param",
+                "Name": "Obj",
+                "SymId": 4716,
+                "Pos": {
+                  "File": 16,
+                  "Line": 254,
+                  "Col": 27
+                },
+                "VarType": {
+                  "Id": 742
+                }
+              }
+            ]
+          },
+          {
+            "Type": "proc",
+            "Name": "GetHashCode",
+            "Id": 834,
+            "SymId": 1894,
+            "Pos": {
+              "File": 16,
+              "Line": 255,
+              "Col": 20
+            },
+            "Options": [
+              "function",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 12
+            },
+            "Params": []
+          },
+          {
+            "Type": "proc",
+            "Name": "ToString",
+            "Id": 835,
+            "SymId": 1895,
+            "Pos": {
+              "File": 16,
+              "Line": 256,
+              "Col": 20
+            },
+            "Options": [
+              "function",
+              "virtual"
+            ],
+            "RetType": {
+              "Id": 28
+            },
+            "Params": []
+          },
+          {
+            "Type": "field",
+            "Name": "$hidden_vptr$TOBJECT",
+            "SymId": 4653,
+            "Pos": {
+              "File": 16,
+              "Line": 257,
+              "Col": 11
+            },
+            "Visibility": "private",
+            "VarType": {
+              "Id": 4
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

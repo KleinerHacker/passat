@@ -13,7 +13,7 @@ dependencies {
     implementation(project(":plugin"))
 
     intellijPlatform {
-        intellijIdea(libs.versions.platform.get())
+        intellijIdea("2025.3.5")
     }
 }
 

@@ -47,4 +47,10 @@
             implementation="org.pcsoft.passat.plugin.module.PascalModuleConfigurationEditorProvider"/>
     </extensions>
 
+    <!-- Supplies compiled units' real internal names (read from .ppu via ppudump) to the language
+         core's unit-name extension point. -->
+    <extensions defaultExtensionNs="org.pcsoft.passat.language">
+        <unitNameProvider implementation="org.pcsoft.passat.plugin.sdk.ppu.FpcPpuUnitNameProvider"/>
+    </extensions>
+
 </idea-plugin>

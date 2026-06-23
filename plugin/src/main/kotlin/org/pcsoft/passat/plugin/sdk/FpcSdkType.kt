@@ -1,5 +1,6 @@
 package org.pcsoft.passat.plugin.sdk
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.WriteAction
 import com.intellij.openapi.projectRoots.AdditionalDataConfigurable
 import com.intellij.openapi.projectRoots.Sdk
@@ -14,6 +15,7 @@ import org.jdom.Element
 import java.io.File
 import org.pcsoft.passat.plugin.i18n.PassatBundle
 import org.pcsoft.passat.plugin.icon.PassatIcons
+import org.pcsoft.passat.plugin.sdk.ppu.FpcUnitIndex
 import javax.swing.Icon
 
 /**
@@ -46,9 +48,22 @@ class FpcSdkType : SdkType("FPC") {
         return candidates.flatMap { base -> FpcSdkUtil.expandToValidHomes(base) }.distinct()
     }
 
-    override fun isValidSdkHome(path: String): Boolean = FpcSdkUtil.isValidHome(path)
+    /**
+     * A home is only accepted when it carries both a compiler and the `ppudump` tool. `ppudump` is
+     * mandatory because Passat reads each unit's real name and interface symbols from its `.ppu` via
+     * `ppudump -Fjson`; a minimal FPC install that ships the compiler but not `ppudump` is therefore
+     * rejected (see [getInvalidHomeMessage] for the user-facing guidance).
+     */
+    override fun isValidSdkHome(path: String): Boolean =
+        FpcSdkUtil.isValidHome(path) && FpcSdkUtil.hasPpuDump(path)
 
-    override fun getInvalidHomeMessage(path: String): String = PassatBundle.message("sdk.fpc.home.invalid")
+    override fun getInvalidHomeMessage(path: String): String =
+        // A compiler but no ppudump means the user picked a too-minimal FPC distribution: point them
+        // at a full install instead of the generic "not an FPC home" message.
+        if (FpcSdkUtil.isValidHome(path) && !FpcSdkUtil.hasPpuDump(path))
+            PassatBundle.message("sdk.fpc.home.noPpudump")
+        else
+            PassatBundle.message("sdk.fpc.home.invalid")
 
     override fun getVersionString(sdkHome: String): String? = FpcSdkUtil.detectVersion(sdkHome)
 
@@ -75,6 +90,13 @@ class FpcSdkType : SdkType("FPC") {
         // setupSdkPaths may be invoked off the EDT (ProjectSdksModel), but commitChanges() needs a
         // write action on the EDT — runAndWait switches threads and takes the write lock.
         WriteAction.runAndWait<RuntimeException> { modificator.commitChanges() }
+
+        // Read each compiled unit's real name and interface symbols via ppudump and cache them, so
+        // `uses` completion can offer correctly-cased unit names without re-running the tool. This
+        // spawns one process per unit, so it runs on a background thread, never the EDT.
+        ApplicationManager.getApplication().executeOnPooledThread {
+            FpcUnitIndex.getInstance().ensureIndexed(home)
+        }
     }
 
     private fun addRoots(modificator: SdkModificator, dirs: List<File>, rootType: OrderRootType) {

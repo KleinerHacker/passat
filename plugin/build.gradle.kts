@@ -12,13 +12,25 @@ plugins {
 }
 
 dependencies {
-    testImplementation(libs.junit)
+    testImplementation("junit:junit:4.13.2")
 
     // Bundle the reusable language core into the plugin distribution.
     implementation(project(":language"))
 
+    // Jackson parses the JSON emitted by `ppudump -Fjson`. The IntelliJ Platform already ships
+    // jackson-databind/core and the Kotlin module at runtime, so depend on them compile-only (and
+    // for tests) to avoid bundling a second, possibly conflicting, copy. The version is aligned with
+    // the Jackson version bundled in the IntelliJ Platform.
+    compileOnly("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+    // The Kotlin module is needed for Jackson to honour data-class defaults. Exclude its transitive
+    // Kotlin stdlib/reflect: the platform (and Kotlin plugin) already provide Kotlin at runtime, and
+    // letting Jackson drag in a different version corrupts the platform test runtime.
+    compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3") { exclude(group = "org.jetbrains.kotlin") }
+    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3") { exclude(group = "org.jetbrains.kotlin") }
+
     intellijPlatform {
-        intellijIdea(libs.versions.platform.get())
+        intellijIdea("2025.3.5")
         testFramework(TestFrameworkType.Platform)
     }
 }

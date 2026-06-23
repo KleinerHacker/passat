@@ -136,6 +136,34 @@ class FpcSdkUtilTest {
     }
 
     @Test
+    fun findsPpuDumpInNestedArchSubdirectory() {
+        // ppudump ships alongside the compiler, under the same nested bin\<arch> layout on Windows.
+        val home = tempFolder.newFolder("fpc-ppudump")
+        val arch = home.toPath().resolve("bin").resolve("i386-win32").toFile()
+        arch.mkdirs()
+        java.io.File(arch, exe("ppcrossx64")).writeText("")
+        java.io.File(arch, exe("ppudump")).writeText("")
+
+        assertTrue(FpcSdkUtil.hasPpuDump(home.absolutePath))
+        assertNotNull(FpcSdkUtil.findPpuDumpExecutable(home.absolutePath))
+    }
+
+    @Test
+    fun reportsMissingPpuDumpWhenCompilerPresentButNoPpuDump() {
+        // A minimal install with a compiler but no ppudump must be detected so the SDK type can tell
+        // the user to install a fuller FPC distribution.
+        val home = tempFolder.newFolder("fpc-minimal")
+        val bin = home.toPath().resolve("bin").toFile()
+        bin.mkdirs()
+        java.io.File(bin, exe("fpc")).writeText("")
+
+        assertTrue(FpcSdkUtil.isValidHome(home.absolutePath))
+        assertFalse(FpcSdkUtil.hasPpuDump(home.absolutePath))
+        assertNull(FpcSdkUtil.findPpuDumpExecutable(home.absolutePath))
+        assertNull(FpcSdkUtil.findPpuDumpExecutable(""))
+    }
+
+    @Test
     fun detectVersionReturnsNullForMissingCompiler() {
         val home = tempFolder.newFolder("fpc-noexe")
         assertNull(FpcSdkUtil.detectVersion(home.absolutePath))

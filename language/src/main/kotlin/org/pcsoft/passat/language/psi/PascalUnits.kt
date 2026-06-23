@@ -31,10 +31,17 @@ object PascalUnits {
     /** An importable unit: its name and the file that provides it (a `.pas`/`.pp` or `.ppu`). */
     data class Unit(val name: String, val file: VirtualFile)
 
+    /**
+     * The name a unit is presented and matched under: a [PascalUnitNameProvider]'s name if any is
+     * contributed (e.g. the real internal name a compiled `.ppu` carries), else the file's base name.
+     */
+    private fun unitName(project: Project, file: VirtualFile): String =
+        PascalUnitNameProvider.resolve(project, file) ?: file.nameWithoutExtension
+
     /** All importable unit names visible in [scope], de-duplicated case-insensitively and sorted. */
     fun availableUnitNames(project: Project, scope: GlobalSearchScope): List<String> {
         val names = sortedSetOf(String.CASE_INSENSITIVE_ORDER)
-        candidateFiles(project, scope).forEach { names.add(it.nameWithoutExtension) }
+        candidateFiles(project, scope).forEach { names.add(unitName(project, it)) }
         return names.toList()
     }
 
@@ -46,12 +53,13 @@ object PascalUnits {
     fun availableUnits(project: Project, scope: GlobalSearchScope): List<Unit> {
         val byName = sortedMapOf<String, Unit>(String.CASE_INSENSITIVE_ORDER)
         candidateFiles(project, scope).forEach { file ->
-            byName.putIfAbsent(file.nameWithoutExtension, Unit(file.nameWithoutExtension, file))
+            val name = unitName(project, file)
+            byName.putIfAbsent(name, Unit(name, file))
         }
         return byName.values.toList()
     }
 
     /** The file providing the unit named [name] in [scope], or `null` if none is visible. */
     fun findUnitFile(project: Project, name: String, scope: GlobalSearchScope): VirtualFile? =
-        candidateFiles(project, scope).firstOrNull { it.nameWithoutExtension.equals(name, ignoreCase = true) }
+        candidateFiles(project, scope).firstOrNull { unitName(project, it).equals(name, ignoreCase = true) }
 }

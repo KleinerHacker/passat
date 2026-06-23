@@ -52,6 +52,32 @@ object FpcSdkUtil {
     fun isValidHome(home: String): Boolean = findCompilerExecutable(home) != null
 
     /**
+     * Returns the `ppudump` executable under the given home, or `null` if none exists. `ppudump`
+     * decodes compiled `.ppu` units (we use its `-Fjson` mode) and is required for Passat to read a
+     * unit's real internal name and interface symbols. It lives next to the compiler, so we probe
+     * the same roots (`<home>`, `<home>/bin`, `<home>/bin/<arch>`). The executable is `ppudump.exe`
+     * on Windows and `ppudump` elsewhere via [exeName].
+     */
+    fun findPpuDumpExecutable(home: String): File? {
+        if (home.isBlank()) return null
+        val bin = File(home, "bin")
+        val roots = buildList {
+            add(File(home))
+            add(bin)
+            bin.listFiles { f -> f.isDirectory }?.let { addAll(it) }
+        }
+        val target = exeName("ppudump")
+        for (root in roots) {
+            val candidate = File(root, target)
+            if (candidate.isFile) return candidate
+        }
+        return null
+    }
+
+    /** True if the `ppudump` tool is present under the given FPC home. */
+    fun hasPpuDump(home: String): Boolean = findPpuDumpExecutable(home) != null
+
+    /**
      * Resolves a base directory to the FPC homes it (transitively) contains. If [base] is itself a
      * valid home it is returned as-is; otherwise its immediate subdirectories are probed, which
      * covers the common versioned layout `C:\FPC\<version>` (the Windows installer puts the real

@@ -5,6 +5,15 @@
      lang.psiStructureViewFactory, completion.contributor, psi.referenceContributor,
      lang.findUsagesProvider, annotator, localInspection, etc. -->
 <idea-plugin>
+    <!-- Extension point a toolchain-aware host (e.g. :plugin) fills to supply a unit's real internal
+         name (read from a compiled .ppu) instead of its file-name-derived default. -->
+    <extensionPoints>
+        <extensionPoint
+            qualifiedName="org.pcsoft.passat.language.unitNameProvider"
+            interface="org.pcsoft.passat.language.psi.PascalUnitNameProvider"
+            dynamic="true"/>
+    </extensionPoints>
+
     <extensions defaultExtensionNs="com.intellij">
         <fileType
             name="Object Pascal"

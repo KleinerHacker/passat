@@ -24,10 +24,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation(libs.junit)
+    testImplementation("junit:junit:4.13.2")
 
     intellijPlatform {
-        intellijIdea(libs.versions.platform.get())
+        intellijIdea("2025.3.5")
         testFramework(TestFrameworkType.Platform)
     }
 }
