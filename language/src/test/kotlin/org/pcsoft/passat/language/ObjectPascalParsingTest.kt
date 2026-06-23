@@ -20,6 +20,12 @@ class ObjectPascalParsingTest : ParsingTestCase("", "pas", ObjectPascalParserDef
     /** A unit with `uses` clauses in both the interface and implementation sections. */
     fun testUnitWithUses() = doTest(true)
 
+    /** Several consecutive `uses` clauses are allowed (like Java imports) in a program. */
+    fun testProgramWithMultipleUses() = doTest(true)
+
+    /** Several consecutive `uses` clauses are allowed in both unit sections. */
+    fun testUnitWithMultipleUses() = doTest(true)
+
     /** A unit with optional `initialization` and `finalization` sections (in that order). */
     fun testUnitWithInitialization() = doTest(true)
 

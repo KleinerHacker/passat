@@ -44,13 +44,13 @@
 
 pascalFile ::= programDefinition | unitDefinition
 
-programDefinition ::= PROGRAM IDENTIFIER SEMICOLON usesClause? block DOT
+programDefinition ::= PROGRAM IDENTIFIER SEMICOLON usesClause* block DOT
 
 // A unit file: header, interface section (may import units), implementation section
 // (may import units), an optional `initialization` and an optional `finalization` section (each
-// independent, but in this order), terminated by `end.`. Statements inside the sections are future
-// work.
-unitDefinition ::= UNIT IDENTIFIER SEMICOLON INTERFACE usesClause? IMPLEMENTATION usesClause? INITIALIZATION? FINALIZATION? END DOT
+// independent, but in this order), terminated by `end.`. Like Java imports, several consecutive
+// `uses` clauses are allowed in each section. Statements inside the sections are future work.
+unitDefinition ::= UNIT IDENTIFIER SEMICOLON INTERFACE usesClause* IMPLEMENTATION usesClause* INITIALIZATION? FINALIZATION? END DOT
 
 // `pin=1`: once `uses` is matched the clause node is created even while the rest is still being
 // typed (before the terminating `;`), so unit-name completion works immediately after `uses`.

@@ -38,20 +38,21 @@ class ObjectPascalKeywordCompletionTest : BasePlatformTestCase() {
         assertDoesntContain(completionsAt("program P;\nbegin\n<caret>\nend."), "uses")
     }
 
-    fun testUsesNotOfferedTwice() {
-        // A program may have only one uses clause; do not offer it again afterwards.
-        assertDoesntContain(completionsAt("program P;\nuses SysUtils;\n<caret>\nbegin\nend."), "uses")
+    fun testUsesOfferedAgainAfterUses() {
+        // Like Java imports, several consecutive `uses` clauses are allowed, so `uses` is offered
+        // again after a preceding clause.
+        assertContainsElements(completionsAt("program P;\nuses SysUtils;\n<caret>\nbegin\nend."), "uses")
     }
 
     fun testBeginOfferedAfterProgramHeader() {
         assertContainsElements(completionsAt("program P;\n<caret>"), "begin")
     }
 
-    fun testBeginOfferedAfterLastUses() {
+    fun testBeginOfferedAfterUses() {
         val suggestions = completionsAt("program P;\nuses SysUtils;\n<caret>")
         assertContainsElements(suggestions, "begin")
-        // `uses` is already present, so it must not be offered again here.
-        assertDoesntContain(suggestions, "uses")
+        // Another `uses` clause is still allowed here, so it is offered alongside `begin`.
+        assertContainsElements(suggestions, "uses")
     }
 
     fun testBeginNotOfferedAtRoot() {

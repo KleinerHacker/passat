@@ -27,6 +27,9 @@
         <lang.syntaxHighlighterFactory
             language="ObjectPascal"
             implementationClass="org.pcsoft.passat.language.highlight.ObjectPascalSyntaxHighlighterFactory"/>
+        <lang.foldingBuilder
+            language="ObjectPascal"
+            implementationClass="org.pcsoft.passat.language.folding.ObjectPascalFoldingBuilder"/>
         <completion.contributor
             language="ObjectPascal"
             implementationClass="org.pcsoft.passat.language.completion.ObjectPascalUsesCompletionContributor"/>

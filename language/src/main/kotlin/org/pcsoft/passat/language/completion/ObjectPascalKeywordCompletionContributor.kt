@@ -88,18 +88,29 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
         private val hasImplementation: Boolean,
         private val hasInitialization: Boolean,
         private val hasFinalization: Boolean,
-        private val hasUses: Boolean,
         private val endCount: Int,
         private val openBlocksValue: Int,
         private val lastMeaningful: IElementType?,
     ) {
         val openBlocks: Int get() = openBlocksValue
 
-        /** `uses` is valid after the program header (before any `begin`) or after a section keyword. */
+        /**
+         * `uses` is valid wherever a `uses` clause may (repeatedly) appear: after the program header,
+         * inside a unit's interface section, or inside its implementation section. Like Java imports,
+         * several consecutive `uses` clauses are allowed, so a `;` that closed a preceding clause also
+         * permits another `uses` — the trailing keyword need not be the section keyword itself.
+         */
         val allowsUses: Boolean
-            get() = (hasProgram && openBlocksValue == 0 && !hasUses && lastMeaningful == ObjectPascalTypes.SEMICOLON) ||
-                lastMeaningful == ObjectPascalTypes.INTERFACE ||
-                lastMeaningful == ObjectPascalTypes.IMPLEMENTATION
+            get() {
+                val inProgramHeader = hasProgram && openBlocksValue == 0 &&
+                    lastMeaningful == ObjectPascalTypes.SEMICOLON
+                val inInterface = hasInterface && !hasImplementation &&
+                    (lastMeaningful == ObjectPascalTypes.INTERFACE || lastMeaningful == ObjectPascalTypes.SEMICOLON)
+                val inImplementation = hasImplementation && endCount == 0 && openBlocksValue == 0 &&
+                    !hasInitialization && !hasFinalization &&
+                    (lastMeaningful == ObjectPascalTypes.IMPLEMENTATION || lastMeaningful == ObjectPascalTypes.SEMICOLON)
+                return inProgramHeader || inInterface || inImplementation
+            }
 
         /** `interface` opens a unit's interface section, right after the `unit X;` header. */
         val allowsInterface: Boolean
@@ -169,7 +180,6 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                 var hasImplementation = false
                 var hasInitialization = false
                 var hasFinalization = false
-                var hasUses = false
                 for (token in tokens) {
                     when (token.elementType) {
                         ObjectPascalTypes.BEGIN -> begins++
@@ -180,7 +190,6 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                         ObjectPascalTypes.IMPLEMENTATION -> hasImplementation = true
                         ObjectPascalTypes.INITIALIZATION -> hasInitialization = true
                         ObjectPascalTypes.FINALIZATION -> hasFinalization = true
-                        ObjectPascalTypes.USES -> hasUses = true
                     }
                 }
                 return TokenContext(
@@ -191,7 +200,6 @@ class ObjectPascalKeywordCompletionContributor : CompletionContributor() {
                     hasImplementation = hasImplementation,
                     hasInitialization = hasInitialization,
                     hasFinalization = hasFinalization,
-                    hasUses = hasUses,
                     endCount = ends,
                     openBlocksValue = (begins - ends).coerceAtLeast(0),
                     lastMeaningful = tokens.lastOrNull()?.elementType,
